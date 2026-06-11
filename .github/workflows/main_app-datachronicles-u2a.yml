@@ -10,7 +10,7 @@ on:
   workflow_dispatch:        # allow manual runs from the Actions tab
 
 env:
-  AZURE_WEBAPP_NAME: app-datachronicles            # <-- change to your Web App name
+  AZURE_WEBAPP_NAME: app-datachronicles-u2a           # <-- change to your Web App name
   DOTNET_VERSION: '9.0.x'
   NODE_VERSION: '20.x'
   API_PROJECT: backend/DataChronicles.Api/DataChronicles.Api.csproj
