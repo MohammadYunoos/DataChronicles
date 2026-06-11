@@ -59,7 +59,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<ZeroShotClassifierService>(c =>
-    c.Timeout = TimeSpan.FromSeconds(15)); // fail fast if HF is unreachable
+    c.Timeout = TimeSpan.FromSeconds(120)); // fail fast if HF is unreachable
 builder.Services.AddScoped<ExcelInputReader>();
 builder.Services.AddScoped<ExcelOutputWriter>();
 builder.Services.AddScoped<TicketProcessingService>();
