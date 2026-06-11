@@ -1,0 +1,34 @@
+# ---- Secrets / local config (NEVER commit) ----
+**/appsettings.Development.json
+**/appsettings.*.local.json
+*.env
+.env
+secrets.json
+
+# ---- .NET ----
+bin/
+obj/
+publish/
+*.user
+*.suo
+.vs/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+
+# ---- Node / frontend ----
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+yarn-error.log*
+
+# ---- Deployment artifacts ----
+app.zip
+api.zip
+*.zip
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+*.log
