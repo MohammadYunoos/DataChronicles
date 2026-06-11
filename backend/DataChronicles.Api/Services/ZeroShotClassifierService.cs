@@ -95,9 +95,27 @@ public class ZeroShotClassifierService
         var res = await _http.PostAsync("", content);
         res.EnsureSuccessStatusCode();
 
-        var json = JObject.Parse(await res.Content.ReadAsStringAsync());
-        var label = json["labels"]?[0]?.ToString() ?? Labels[0];
-        var score = json["scores"]?[0]?.Value<double>() ?? 0.0;
+        var raw = await res.Content.ReadAsStringAsync();
+        var token = JToken.Parse(raw);
+
+        // The HF router returns one of three shapes; handle all of them:
+        //  (A) { sequence, labels[], scores[] }                 — zero-shot object
+        //  (B) [ { sequence, labels[], scores[] } ]             — wrapped in an array
+        //  (C) [ { label, score }, { label, score }, ... ]      — flat label/score list
+        if (token is JArray arr && arr.Count > 0)
+        {
+            // (C): flat list of {label, score} — pick the highest score.
+            if (arr[0]?["labels"] == null && arr[0]?["label"] != null)
+            {
+                var best = arr.OrderByDescending(t => (double?)t["score"] ?? 0).First();
+                return (best["label"]!.ToString(), Math.Round((double)best["score"]!, 4));
+            }
+            token = arr[0]!; // (B): unwrap to the object
+        }
+
+        var obj = (JObject)token;
+        var label = obj["labels"]?[0]?.ToString() ?? Labels[0];
+        var score = obj["scores"]?[0]?.Value<double>() ?? 0.0;
         return (label, Math.Round(score, 4));
     }
 
