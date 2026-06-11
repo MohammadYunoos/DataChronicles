@@ -25,21 +25,21 @@ public class ZeroShotClassifierService
     // Candidate labels derived from the reference dataset (test_data_50 / test_categories).
     public static readonly string[] Labels =
     {
-        "Test_Job_Alert",
-        "Test_Job_Data Issue",
-        "Test_Job_File/DB contention",
-        "Test_Job_Vendor/Upstream feed unavailability",
-        "Test_Job_FTP/Server Connectivity issue"
+        "Alert",
+        "Data Issue",
+        "DB contention",
+        "Upstream feed unavailability",
+        "Server Connectivity issue"
     };
 
     // Keyword cues per label for the offline fallback classifier.
     private static readonly Dictionary<string, string[]> Keywords = new()
     {
-        ["Test_Job_Alert"] = new[] { "alert", "hold", "waiting", "cond", "warning", "delayed", "pending" },
-        ["Test_Job_Data Issue"] = new[] { "data", "load", "record", "missing", "duplicate", "mismatch", "invalid", "abend", "quarterly" },
-        ["Test_Job_File/DB contention"] = new[] { "db", "database", "lock", "contention", "deadlock", "file", "table", "resource", "busy" },
-        ["Test_Job_Vendor/Upstream feed unavailability"] = new[] { "vendor", "upstream", "feed", "unavailable", "unavailability", "source", "external", "third" },
-        ["Test_Job_FTP/Server Connectivity issue"] = new[] { "ftp", "server", "connectivity", "connection", "network", "timeout", "host", "down", "unreachable" }
+        ["Alert"] = new[] { "alert", "hold", "waiting", "cond", "warning", "delayed", "pending" },
+        ["Data Issue"] = new[] { "data", "load", "record", "missing", "duplicate", "mismatch", "invalid", "abend", "quarterly" },
+        ["DB contention"] = new[] { "db", "database", "lock", "contention", "deadlock", "file", "table", "resource", "busy" },
+        ["Upstream feed unavailability"] = new[] { "vendor", "upstream", "feed", "unavailable", "unavailability", "source", "external", "third" },
+        ["Server Connectivity issue"] = new[] { "ftp", "server", "connectivity", "connection", "network", "timeout", "host", "down", "unreachable" }
     };
 
     public ZeroShotClassifierService(HttpClient http, IConfiguration config, ILogger<ZeroShotClassifierService> log)
