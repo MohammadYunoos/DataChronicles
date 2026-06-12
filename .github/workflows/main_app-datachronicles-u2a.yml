@@ -1,55 +1,68 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
+name: Build and deploy Data Chronicles to Azure App Service
 
-name: Build and deploy ASP.Net Core app to Azure Web App - app-datachronicles-u2a
+# Deploys the single App Service package (React UI bundled into the .NET API's wwwroot).
+# Set up via:  App Service → Deployment Center → GitHub  (this file is what it runs),
+# or commit it manually and add the publish-profile secret below.
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [ main ]
+  workflow_dispatch:        # allow manual runs from the Actions tab
+
+env:
+  AZURE_WEBAPP_NAME: app-datachronicles-u2a           # <-- change to your Web App name
+  DOTNET_VERSION: '9.0.x'
+  NODE_VERSION: '20.x'
+  API_PROJECT: backend/DataChronicles.Api/DataChronicles.Api.csproj
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment: production
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set up .NET Core
+      # ---- Frontend (React + Vite) ----
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Build React UI
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
+
+      # ---- Backend (.NET 9) ----
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.x'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+      - name: Publish API
+        run: dotnet publish ${{ env.API_PROJECT }} -c Release -o publish
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      # ---- Bundle UI into the API's wwwroot (single App Service hosts both) ----
+      - name: Bundle UI into wwwroot
+        run: |
+          mkdir -p publish/wwwroot
+          cp -r frontend/dist/* publish/wwwroot/
 
-      - name: Upload artifact for deployment job
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          name: app
+          path: publish
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: .net-app
-      
+      # ---- Deploy to Azure App Service ----
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'app-datachronicles-u2a'
-          slot-name: 'Production'
-          package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6CA4E7C4FB4549B892D43DFC579F130F }}
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: publish

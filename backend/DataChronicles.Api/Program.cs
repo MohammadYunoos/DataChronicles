@@ -59,9 +59,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<ZeroShotClassifierService>(c =>
-    // Allow for HF cold-start model loading (wait_for_model can take 20-40s on the
-    // first call). The circuit breaker means only the first failed call waits this long.
-    c.Timeout = TimeSpan.FromSeconds(120));
+    c.Timeout = TimeSpan.FromSeconds(15)); // fail fast if HF is unreachable
 builder.Services.AddScoped<ExcelInputReader>();
 builder.Services.AddScoped<ExcelOutputWriter>();
 builder.Services.AddScoped<TicketProcessingService>();
