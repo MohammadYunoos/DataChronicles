@@ -65,7 +65,10 @@ public class TicketProcessingService
         await _db.SaveChangesAsync();
         await ReportProgress(connectionId, 100);
 
-        _log.LogInformation("Categorized {Count} tickets in batch {Batch}", total, batchId);
+        if (_log.IsEnabled(LogLevel.Information))
+{
+    _log.LogInformation("Categorized {Count} tickets in batch {Batch}", total, batchId);
+}
 
         return new CategorizationResult
         {
