@@ -10,6 +10,7 @@ import {
 import SummaryView from './components/SummaryView';
 import ResultsTable from './components/ResultsTable';
 import ChatPanel from './components/ChatPanel';
+import { AuthUser, getMe, logoutUrl } from './auth';
 
 export default function App() {
   const [file, setFile] = useState<File | null>(null);
@@ -18,7 +19,14 @@ export default function App() {
   const [result, setResult] = useState<CategorizationResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
   const connectionId = useRef<string | undefined>(undefined);
+
+  // Identify the signed-in user via App Service Easy Auth (/.auth/me).
+  // Returns null when SSO is off (e.g. local dev), so the header simply hides it.
+  useEffect(() => {
+    getMe().then(setUser);
+  }, []);
 
   // Live progress over SignalR (best-effort; categorization works without it).
   useEffect(() => {
@@ -66,6 +74,13 @@ export default function App() {
 
   return (
     <div className="page">
+      {user && (
+        <div className="user-bar">
+          <span>Signed in as <strong>{user.name}</strong></span>
+          <a className="logout" href={logoutUrl}>Logout</a>
+        </div>
+      )}
+
       <header className="hero">
         <h1>Upload Excel File for Ticket Categorization</h1>
         <p className="subtitle">Data Chronicles — AI-Powered Search Engine for Application Issue Categorization</p>
