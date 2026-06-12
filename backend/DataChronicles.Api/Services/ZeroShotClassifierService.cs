@@ -25,21 +25,21 @@ public class ZeroShotClassifierService
     // Candidate labels derived from the reference dataset (test_data_50 / test_categories).
     public static readonly string[] Labels =
     {
-        "Test_Job_Alert",
-        "Test_Job_Data Issue",
-        "Test_Job_File/DB contention",
-        "Test_Job_Vendor/Upstream feed unavailability",
-        "Test_Job_FTP/Server Connectivity issue"
+        "Alert",
+        "Data Issue",
+        "DB contention",
+        "Upstream feed unavailability",
+        "Server Connectivity issue"
     };
 
     // Keyword cues per label for the offline fallback classifier.
     private static readonly Dictionary<string, string[]> Keywords = new()
     {
-        ["Test_Job_Alert"] = new[] { "alert", "hold", "waiting", "cond", "warning", "delayed", "pending" },
-        ["Test_Job_Data Issue"] = new[] { "data", "load", "record", "missing", "duplicate", "mismatch", "invalid", "abend", "quarterly" },
-        ["Test_Job_File/DB contention"] = new[] { "db", "database", "lock", "contention", "deadlock", "file", "table", "resource", "busy" },
-        ["Test_Job_Vendor/Upstream feed unavailability"] = new[] { "vendor", "upstream", "feed", "unavailable", "unavailability", "source", "external", "third" },
-        ["Test_Job_FTP/Server Connectivity issue"] = new[] { "ftp", "server", "connectivity", "connection", "network", "timeout", "host", "down", "unreachable" }
+        ["Alert"] = new[] { "alert", "hold", "waiting", "cond", "warning", "delayed", "pending" },
+        ["Data Issue"] = new[] { "data", "load", "record", "missing", "duplicate", "mismatch", "invalid", "abend", "quarterly" },
+        ["DB contention"] = new[] { "db", "database", "lock", "contention", "deadlock", "file", "table", "resource", "busy" },
+        ["Upstream feed unavailability"] = new[] { "vendor", "upstream", "feed", "unavailable", "unavailability", "source", "external", "third" },
+        ["Server Connectivity issue"] = new[] { "ftp", "server", "connectivity", "connection", "network", "timeout", "host", "down", "unreachable" }
     };
 
     public ZeroShotClassifierService(HttpClient http, IConfiguration config, ILogger<ZeroShotClassifierService> log)
@@ -49,7 +49,7 @@ public class ZeroShotClassifierService
         _token = config["HuggingFace:Token"];
         _model = config["HuggingFace:Model"] ?? "facebook/bart-large-mnli";
 
-        if (!string.IsNullOrWhiteSpace(_token) && !_token.StartsWith("YOUR_") && _token != "<HF_TOKEN>")
+        if (!string.IsNullOrWhiteSpace(_token) && !_token.StartsWith("YOUR_", StringComparison.Ordinal) && _token != "<HF_TOKEN>")
         {
             _http.BaseAddress = new Uri($"https://router.huggingface.co/hf-inference/models/{_model}");
             _http.DefaultRequestHeaders.Authorization =
@@ -58,18 +58,23 @@ public class ZeroShotClassifierService
     }
 
     private bool HfEnabled =>
-        !string.IsNullOrWhiteSpace(_token) && !_token!.StartsWith("YOUR_") && _token != "<HF_TOKEN>";
+        !string.IsNullOrWhiteSpace(_token) && !_token!.StartsWith("YOUR_", StringComparison.Ordinal) && _token != "<HF_TOKEN>";
 
-    public async Task<(string Category, double Confidence)> ClassifyAsync(string text)
+    // Engine identifiers reported back to the UI/output.
+    public const string EngineBart = "BART";
+    public const string EngineInternal = "Internal";
+
+    public async Task<(string Category, double Confidence, string Source)> ClassifyAsync(string text)
     {
         if (string.IsNullOrWhiteSpace(text))
-            return (Labels[0], 0.0);
+            return (Labels[0], 0.0, EngineInternal);
 
         if (HfEnabled && !_hfUnavailable)
         {
             try
             {
-                return await ClassifyWithHuggingFaceAsync(text);
+                var (cat, conf) = await ClassifyWithHuggingFaceAsync(text);
+                return (cat, conf, EngineBart);
             }
             catch (Exception ex)
             {
@@ -80,7 +85,8 @@ public class ZeroShotClassifierService
             }
         }
 
-        return ClassifyOffline(text);
+        var (offlineCat, offlineConf) = ClassifyOffline(text);
+        return (offlineCat, offlineConf, EngineInternal);
     }
 
     private async Task<(string, double)> ClassifyWithHuggingFaceAsync(string text)
@@ -95,9 +101,27 @@ public class ZeroShotClassifierService
         var res = await _http.PostAsync("", content);
         res.EnsureSuccessStatusCode();
 
-        var json = JObject.Parse(await res.Content.ReadAsStringAsync());
-        var label = json["labels"]?[0]?.ToString() ?? Labels[0];
-        var score = json["scores"]?[0]?.Value<double>() ?? 0.0;
+        var raw = await res.Content.ReadAsStringAsync();
+        var token = JToken.Parse(raw);
+
+        // The HF router returns one of three shapes; handle all of them:
+        //  (A) { sequence, labels[], scores[] }                 — zero-shot object
+        //  (B) [ { sequence, labels[], scores[] } ]             — wrapped in an array
+        //  (C) [ { label, score }, { label, score }, ... ]      — flat label/score list
+        if (token is JArray arr && arr.Count > 0)
+        {
+            // (C): flat list of {label, score} — pick the highest score.
+            if (arr[0]?["labels"] == null && arr[0]?["label"] != null)
+            {
+                var best = arr.OrderByDescending(t => (double?)t["score"] ?? 0).First();
+                return (best["label"]!.ToString(), Math.Round((double)best["score"]!, 4));
+            }
+            token = arr[0]!; // (B): unwrap to the object
+        }
+
+        var obj = (JObject)token;
+        var label = obj["labels"]?[0]?.ToString() ?? Labels[0];
+        var score = obj["scores"]?[0]?.Value<double>() ?? 0.0;
         return (label, Math.Round(score, 4));
     }
 

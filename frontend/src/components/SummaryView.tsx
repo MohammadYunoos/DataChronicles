@@ -7,6 +7,7 @@ import {
   Tooltip,
 } from 'recharts';
 import { CategorizationResult } from '../api';
+import EngineBadge from './EngineBadge';
 
 const COLORS = ['#2f6fed', '#16a34a', '#f59e0b', '#ef4444', '#8b5cf6', '#0ea5e9', '#db2777'];
 
@@ -15,7 +16,10 @@ export default function SummaryView({ result }: { result: CategorizationResult }
 
   return (
     <section className="card summary-card">
-      <h2>Summary</h2>
+      <div className="summary-header">
+        <h2>Summary</h2>
+        <EngineBadge source={result.source} />
+      </div>
       <p className="muted">
         Batch <code>{result.batchId}</code> · {result.totalRecords} tickets · {result.summary.length} categories
       </p>

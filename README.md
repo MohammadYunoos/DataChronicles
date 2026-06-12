@@ -116,3 +116,26 @@ frontend/
   src/api.ts                 # Typed API client
   vite.config.ts             # Dev proxy → :5279
 ```
+
+---
+
+## CI / Quality
+
+Two GitHub Actions workflows run independently of deployment:
+
+- **`.github/workflows/ci.yml`** (PRs + `main`) — the quality gate:
+  - **Static scan**: builds the API with .NET analyzers + **Security Code Scan** promoted to
+    errors (`dotnet build -warnaserror`). Analyzer tuning lives in [.editorconfig](.editorconfig).
+  - **Coverage gate**: runs the xUnit tests and **fails if total line coverage < 80%**
+    (currently ~88%). A coverage summary is posted to the run page and an HTML report is uploaded
+    as an artifact. No external service or token required.
+- **`.github/workflows/azure-webapp.yml`** (`main`) — build + deploy to Azure App Service.
+
+Run the same checks locally:
+```powershell
+# scan
+dotnet build backend/DataChronicles.Api -c Release -warnaserror
+# coverage gate
+dotnet test backend/DataChronicles.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura `
+  /p:CoverletOutput=./coverage/coverage.cobertura.xml /p:Threshold=80 /p:ThresholdType=line /p:ThresholdStat=total
+```

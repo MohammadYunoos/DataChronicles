@@ -20,6 +20,8 @@ public class OutputTicket
     public double Confidence { get; set; }
     public string Severity { get; set; } = "Medium";
     public string Sentiment { get; set; } = "Neutral";
+    /// <summary>Which engine produced the category: "BART" (Hugging Face) or "Internal".</summary>
+    public string Source { get; set; } = "Internal";
     public string BatchId { get; set; } = string.Empty;
     public DateTime CreatedOn { get; set; }
 }
@@ -39,5 +41,7 @@ public class CategorizationResult
     public int TotalRecords { get; set; }
     public List<OutputTicket> Tickets { get; set; } = new();
     public List<CategorySummary> Summary { get; set; } = new();
+    /// <summary>Engine used for the batch: "BART", "Internal", or "Mixed".</summary>
+    public string Source { get; set; } = "Internal";
     public string FileName { get; set; } = "categorized_output.xlsx";
 }

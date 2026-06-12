@@ -30,7 +30,7 @@ No Azure CLI required. You build the deployment package locally (you already hav
 6. **Review + create** → **Create**.
 7. Build the connection string (you'll store it in Key Vault next):
    ```
-   Server=tcp:sql-datachronicles-<unique>.database.windows.net,1433;Database=sqldb-datachronicles;User ID=dcadmin;Password=<YOUR_PASSWORD>;Encrypt=true;TrustServerCertificate=false;
+   Server=tcp:sql-datachronicles-u2a.database.windows.net,1433;Database=sqldb-datachronicles;User ID=dcadmin;Password=Yunoos123!;Encrypt=true;TrustServerCertificate=false;
    ```
 
 ## Step 4 — Key Vault (+ SQL secret)
@@ -91,6 +91,29 @@ Deploy the zip through the Portal (no CLI):
 - Open `https://app-datachronicles-<unique>.scm.azurewebsites.net/ZipDeployUI`
   (Kudu) and **drag `app.zip`** onto the page, **or**
 - Web App → **Deployment Center** → choose a source (Local Git / GitHub) and push.
+
+### CI/CD option (GitHub Actions + publish profile)
+A ready workflow lives at [`.github/workflows/azure-webapp.yml`](../.github/workflows/azure-webapp.yml).
+It builds the UI, bundles it into the API's `wwwroot`, and deploys on every push to `main`.
+It authenticates with the Web App's **publish profile** (requires SCM basic-auth publishing = On).
+
+Set it up (one secret, no CLI):
+
+1. Confirm **Settings → Configuration → "SCM Basic Auth Publishing Credentials" = On** on the Web App.
+2. Web App → **Overview → Download publish profile** (downloads a `.PublishSettings` XML file).
+3. GitHub repo → **Settings → Secrets and variables → Actions → New repository secret**:
+   - Name = `AZURE_WEBAPP_PUBLISH_PROFILE`
+   - Value = the **entire contents** of the downloaded file.
+4. Set the workflow's `AZURE_WEBAPP_NAME` to your Web App name.
+5. Push to `main` (or run from the **Actions** tab) — it builds and deploys automatically.
+
+> A **"No credentials found"** failure means this secret is missing/empty or misnamed — re-check step 3.
+
+> **Alternative (OIDC, no basic auth):** if basic-auth publishing is disabled by policy, switch to
+> `azure/login@v2` with a federated credential on an Entra app registration and the secrets
+> `AZURE_CLIENT_ID` / `AZURE_TENANT_ID` / `AZURE_SUBSCRIPTION_ID` (add `permissions: id-token: write`,
+> drop the `publish-profile` input). Portal-only setup: App registration → **Federated credentials**
+> → "GitHub Actions" (Entity = Branch `main`) → grant the app **Contributor** on the resource group.
 
 Verify: browse `https://app-datachronicles-<unique>.azurewebsites.net` (UI) and
 `/api/health` (API). The DB schema is created automatically on first run.

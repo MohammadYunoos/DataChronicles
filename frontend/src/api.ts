@@ -9,6 +9,7 @@ export interface OutputTicket {
   confidence: number;
   severity: string;
   sentiment: string;
+  source: string;
   batchId: string;
   createdOn: string;
 }
@@ -24,6 +25,7 @@ export interface CategorizationResult {
   totalRecords: number;
   tickets: OutputTicket[];
   summary: CategorySummary[];
+  source: string;
   fileName: string;
 }
 

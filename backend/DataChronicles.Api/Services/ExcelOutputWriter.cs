@@ -1,74 +1,130 @@
-using ClosedXML.Excel;
 using DataChronicles.Api.Models;
+using OfficeOpenXml;
+using OfficeOpenXml.Drawing.Chart;
+using OfficeOpenXml.Style;
 
 namespace DataChronicles.Api.Services;
 
 /// <summary>
-/// Generates the downloadable categorized Excel file. The Summary sheet is the first
-/// (default) view when the workbook opens, followed by the full categorized data.
+/// Generates the downloadable categorized Excel file using EPPlus.
+/// Sheet 1 (Summary) is the first/active view on open and contains a native pie
+/// chart of the category distribution; Sheet 2 holds the full categorized data.
 /// </summary>
 public class ExcelOutputWriter
 {
     public byte[] Generate(CategorizationResult result)
     {
-        using var wb = new XLWorkbook();
+        using var pkg = new ExcelPackage();
 
-        BuildSummarySheet(wb, result);
-        BuildDataSheet(wb, result.Tickets);
+        BuildSummarySheet(pkg, result);
+        BuildDataSheet(pkg, result.Tickets);
 
-        using var ms = new MemoryStream();
-        wb.SaveAs(ms);
-        return ms.ToArray();
+        // Make the Summary sheet the first view when the workbook opens.
+        pkg.Workbook.View.ActiveTab = 0;
+        pkg.Workbook.Worksheets[0].View.TabSelected = true;
+
+        return pkg.GetAsByteArray();
     }
 
-    private static void BuildSummarySheet(XLWorkbook wb, CategorizationResult result)
+    private static void BuildSummarySheet(ExcelPackage pkg, CategorizationResult result)
     {
-        var ws = wb.AddWorksheet("Summary");
+        var ws = pkg.Workbook.Worksheets.Add("Summary");
 
-        ws.Cell(1, 1).Value = "Data Chronicles — Categorization Summary";
-        ws.Range(1, 1, 1, 3).Merge().Style.Font.SetBold().Font.FontSize = 14;
+        ws.Cells[1, 1].Value = "Data Chronicles — Categorization Summary";
+        using (var title = ws.Cells[1, 1, 1, 3])
+        {
+            title.Merge = true;
+            title.Style.Font.Bold = true;
+            title.Style.Font.Size = 14;
+        }
 
-        ws.Cell(2, 1).Value = "Batch Id";
-        ws.Cell(2, 2).Value = result.BatchId;
-        ws.Cell(3, 1).Value = "Total Records";
-        ws.Cell(3, 2).Value = result.TotalRecords;
+        ws.Cells[2, 1].Value = "Batch Id";
+        ws.Cells[2, 2].Value = result.BatchId;
+        ws.Cells[3, 1].Value = "Total Records";
+        ws.Cells[3, 2].Value = result.TotalRecords;
+        ws.Cells[4, 1].Value = "Categorization Engine";
+        ws.Cells[4, 2].Value = result.Source; // BART / Internal / Mixed
 
-        var headerRow = 5;
-        ws.Cell(headerRow, 1).Value = "Category";
-        ws.Cell(headerRow, 2).Value = "Count";
-        ws.Cell(headerRow, 3).Value = "Percentage";
-        ws.Range(headerRow, 1, headerRow, 3).Style.Font.SetBold();
-        ws.Range(headerRow, 1, headerRow, 3).Style.Fill.BackgroundColor = XLColor.LightBlue;
+        // Category table
+        const int headerRow = 6;
+        ws.Cells[headerRow, 1].Value = "Category";
+        ws.Cells[headerRow, 2].Value = "Count";
+        ws.Cells[headerRow, 3].Value = "Percentage";
+        using (var h = ws.Cells[headerRow, 1, headerRow, 3])
+        {
+            h.Style.Font.Bold = true;
+            h.Style.Fill.PatternType = ExcelFillStyle.Solid;
+            h.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightBlue);
+        }
 
-        var r = headerRow + 1;
+        var row = headerRow + 1;
         foreach (var s in result.Summary)
         {
-            ws.Cell(r, 1).Value = s.Category;
-            ws.Cell(r, 2).Value = s.Count;
-            ws.Cell(r, 3).Value = $"{s.Percentage}%";
+            ws.Cells[row, 1].Value = s.Category;
+            ws.Cells[row, 2].Value = s.Count;
+            ws.Cells[row, 3].Value = s.Percentage / 100.0;
+            ws.Cells[row, 3].Style.Numberformat.Format = "0.0%";
+            row++;
+        }
+
+        var lastRow = row - 1;
+
+        // Native pie chart bound to the category/count range.
+        if (result.Summary.Count > 0)
+        {
+            var pie = ws.Drawings.AddChart("CategoryPie", eChartType.Pie) as ExcelPieChart;
+            pie!.Title.Text = "Tickets by Category";
+            pie.Series.Add(
+                ws.Cells[headerRow + 1, 2, lastRow, 2],   // values (Count)
+                ws.Cells[headerRow + 1, 1, lastRow, 1]);  // categories (Category)
+            pie.DataLabel.ShowPercent = true;
+            pie.Legend.Position = eLegendPosition.Right;
+            pie.SetPosition(1, 0, 4, 10);   // top-right of the sheet
+            pie.SetSize(520, 360);
+        }
+
+        // Explicit widths (AutoFitColumns uses GDI+ and is not Linux-safe).
+        ws.Column(1).Width = 38;
+        ws.Column(2).Width = 12;
+        ws.Column(3).Width = 14;
+    }
+
+    private static void BuildDataSheet(ExcelPackage pkg, List<OutputTicket> rows)
+    {
+        var ws = pkg.Workbook.Worksheets.Add("Categorized Data");
+
+        var headers = new[]
+        {
+            "Application Name", "Incident", "Job Name", "Category",
+            "Confidence", "Severity", "Sentiment", "Source"
+        };
+        for (var c = 0; c < headers.Length; c++)
+            ws.Cells[1, c + 1].Value = headers[c];
+        using (var h = ws.Cells[1, 1, 1, headers.Length])
+        {
+            h.Style.Font.Bold = true;
+            h.Style.Fill.PatternType = ExcelFillStyle.Solid;
+            h.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightBlue);
+        }
+
+        var r = 2;
+        foreach (var t in rows)
+        {
+            ws.Cells[r, 1].Value = t.ApplicationName;
+            ws.Cells[r, 2].Value = t.Incident;
+            ws.Cells[r, 3].Value = t.JobName;
+            ws.Cells[r, 4].Value = t.Category;
+            ws.Cells[r, 5].Value = t.Confidence;
+            ws.Cells[r, 5].Style.Numberformat.Format = "0%";
+            ws.Cells[r, 6].Value = t.Severity;
+            ws.Cells[r, 7].Value = t.Sentiment;
+            ws.Cells[r, 8].Value = t.Source;
             r++;
         }
 
-        ws.Columns().AdjustToContents();
-        ws.SetTabActive(); // Summary is the first view on open.
-    }
-
-    private static void BuildDataSheet(XLWorkbook wb, List<OutputTicket> rows)
-    {
-        var ws = wb.AddWorksheet("Categorized Data");
-
-        var view = rows.Select(t => new
-        {
-            t.ApplicationName,
-            t.Incident,
-            t.JobName,
-            t.Category,
-            t.Confidence,
-            t.Severity,
-            t.Sentiment
-        }).ToList();
-
-        ws.Cell(1, 1).InsertTable(view, "Tickets");
-        ws.Columns().AdjustToContents();
+        // Explicit widths (AutoFitColumns uses GDI+ and is not Linux-safe).
+        var widths = new[] { 22, 14, 16, 32, 12, 12, 12, 12 };
+        for (var c = 0; c < widths.Length; c++)
+            ws.Column(c + 1).Width = widths[c];
     }
 }

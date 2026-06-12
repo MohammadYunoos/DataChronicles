@@ -39,7 +39,7 @@ public class TicketProcessingService
         foreach (var t in input)
         {
             var clean = CleanDescription(t.Description);
-            var (category, confidence) = await _classifier.ClassifyAsync(clean);
+            var (category, confidence, source) = await _classifier.ClassifyAsync(clean);
 
             var row = new OutputTicket
             {
@@ -50,6 +50,7 @@ public class TicketProcessingService
                 Confidence = confidence,
                 Severity = TextAnalysisService.Severity(t.Description),
                 Sentiment = TextAnalysisService.Sentiment(t.Description),
+                Source = source,
                 BatchId = batchId,
                 CreatedOn = DateTime.UtcNow
             };
@@ -72,8 +73,17 @@ public class TicketProcessingService
             TotalRecords = total,
             Tickets = results,
             Summary = BuildSummary(results),
+            Source = ResolveBatchSource(results),
             FileName = $"test_categories_{batchId}.xlsx"
         };
+    }
+
+    /// <summary>Batch-level engine: "BART", "Internal", or "Mixed" if both were used.</summary>
+    public static string ResolveBatchSource(List<OutputTicket> rows)
+    {
+        if (rows.Count == 0) return ZeroShotClassifierService.EngineInternal;
+        var distinct = rows.Select(r => r.Source).Distinct().ToList();
+        return distinct.Count == 1 ? distinct[0] : "Mixed";
     }
 
     public static List<CategorySummary> BuildSummary(List<OutputTicket> rows)

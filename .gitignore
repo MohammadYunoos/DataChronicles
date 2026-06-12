@@ -15,6 +15,10 @@ publish/
 [Dd]ebug/
 [Rr]elease/
 artifacts/
+TestResults/
+coverage/
+coveragereport/
+coverage*.xml
 
 # ---- Node / frontend ----
 node_modules/

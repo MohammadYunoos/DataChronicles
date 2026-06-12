@@ -20,7 +20,7 @@ public class BlobStorageService
         var conn = config["AzureStorage:BlobConnectionString"];
         var containerName = config["AzureStorage:ContainerName"] ?? "datachronicles";
 
-        if (string.IsNullOrWhiteSpace(conn) || conn.StartsWith("YOUR_"))
+        if (string.IsNullOrWhiteSpace(conn) || conn.StartsWith("YOUR_", StringComparison.Ordinal))
         {
             _log.LogInformation("Blob storage not configured — archival disabled.");
             return;

@@ -36,6 +36,7 @@ export default function ResultsTable({ tickets }: { tickets: OutputTicket[] }) {
               <th>Confidence</th>
               <th>Severity</th>
               <th>Sentiment</th>
+              <th>Source</th>
             </tr>
           </thead>
           <tbody>
@@ -48,6 +49,7 @@ export default function ResultsTable({ tickets }: { tickets: OutputTicket[] }) {
                 <td>{(t.confidence * 100).toFixed(0)}%</td>
                 <td><span className={`badge ${sevClass(t.severity)}`}>{t.severity}</span></td>
                 <td>{t.sentiment}</td>
+                <td>{t.source === 'BART' ? '🤗 BART' : '⚙️ Internal'}</td>
               </tr>
             ))}
           </tbody>

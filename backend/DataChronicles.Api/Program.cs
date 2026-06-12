@@ -32,8 +32,8 @@ builder.Services.AddCors(o => o.AddPolicy("AllowFrontend", p =>
 // ---------------------------------------------------------------------------
 var aiConn = config["ApplicationInsights:ConnectionString"];
 var aiKey = config["ApplicationInsights:InstrumentationKey"];
-if ((!string.IsNullOrWhiteSpace(aiConn) && !aiConn.StartsWith("YOUR_")) ||
-    (!string.IsNullOrWhiteSpace(aiKey) && !aiKey.StartsWith("YOUR_")))
+if ((!string.IsNullOrWhiteSpace(aiConn) && !aiConn.StartsWith("YOUR_", StringComparison.Ordinal)) ||
+    (!string.IsNullOrWhiteSpace(aiKey) && !aiKey.StartsWith("YOUR_", StringComparison.Ordinal)))
 {
     builder.Services.AddApplicationInsightsTelemetry();
 }
@@ -44,7 +44,7 @@ if ((!string.IsNullOrWhiteSpace(aiConn) && !aiConn.StartsWith("YOUR_")) ||
 var sqlConn = config.GetConnectionString("Sql") ?? config["ConnectionStrings:Sql"];
 builder.Services.AddDbContext<DataChroniclesDbContext>(opt =>
 {
-    if (!string.IsNullOrWhiteSpace(sqlConn) && !sqlConn.StartsWith("YOUR_"))
+    if (!string.IsNullOrWhiteSpace(sqlConn) && !sqlConn.StartsWith("YOUR_", StringComparison.Ordinal))
         opt.UseSqlServer(sqlConn);
     else
         opt.UseInMemoryDatabase("DataChronicles");
@@ -59,7 +59,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<ZeroShotClassifierService>(c =>
-    c.Timeout = TimeSpan.FromSeconds(15)); // fail fast if HF is unreachable
+    // Allow for HF cold-start model loading (wait_for_model can take 20-40s on the
+    // first call). The circuit breaker means only the first failed call waits this long.
+    c.Timeout = TimeSpan.FromSeconds(120));
 builder.Services.AddScoped<ExcelInputReader>();
 builder.Services.AddScoped<ExcelOutputWriter>();
 builder.Services.AddScoped<TicketProcessingService>();
