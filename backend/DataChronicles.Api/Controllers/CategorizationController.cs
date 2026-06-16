@@ -37,7 +37,8 @@ public class CategorizationController : ControllerBase
     /// </summary>
     [HttpPost("upload")]
     [RequestSizeLimit(20_000_000)]
-    public async Task<IActionResult> Upload([FromForm] IFormFile file, [FromQuery] string? connectionId)
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> Upload(IFormFile file, [FromQuery] string? connectionId)
     {
         List<InputTicket> input;
         try
