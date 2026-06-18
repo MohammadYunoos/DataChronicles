@@ -1,0 +1,4305 @@
+{
+  "DataChronicles.Api.dll": {
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Program.cs": {
+      "Program": {
+        "System.Void Program::<Main>$(System.String[])": {
+          "Lines": {
+            "7": 1,
+            "8": 1,
+            "14": 1,
+            "15": 1,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 1,
+            "25": 1,
+            "26": 1,
+            "27": 2,
+            "28": 3,
+            "33": 1,
+            "34": 1,
+            "35": 1,
+            "36": 1,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "44": 1,
+            "45": 1,
+            "46": 7,
+            "47": 7,
+            "48": 0,
+            "49": 1,
+            "50": 7,
+            "51": 8,
+            "56": 1,
+            "57": 1,
+            "58": 1,
+            "59": 1,
+            "61": 1,
+            "62": 1,
+            "63": 1,
+            "64": 6,
+            "65": 2,
+            "66": 6,
+            "67": 1,
+            "68": 1,
+            "69": 1,
+            "70": 1,
+            "71": 1,
+            "72": 1,
+            "74": 1,
+            "77": 1,
+            "78": 1,
+            "79": 1,
+            "80": 1,
+            "81": 1,
+            "83": 1,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "89": 1,
+            "93": 1,
+            "94": 1,
+            "96": 1,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "102": 2,
+            "103": 1,
+            "104": 1,
+            "107": 1,
+            "109": 1
+          },
+          "Branches": [
+            {
+              "Line": 15,
+              "Offset": 37,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 15,
+              "Offset": 37,
+              "EndOffset": 80,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 25,
+              "Offset": 110,
+              "EndOffset": 112,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 110,
+              "EndOffset": 135,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 197,
+              "EndOffset": 199,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 197,
+              "EndOffset": 214,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 212,
+              "EndOffset": 214,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 221,
+              "EndOffset": 223,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 221,
+              "EndOffset": 241,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 212,
+              "EndOffset": 244,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 249,
+              "EndOffset": 251,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 249,
+              "EndOffset": 265,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 1
+            },
+            {
+              "Line": 44,
+              "Offset": 278,
+              "EndOffset": 280,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 278,
+              "EndOffset": 292,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 1
+            },
+            {
+              "Line": 83,
+              "Offset": 655,
+              "EndOffset": 657,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 83,
+              "Offset": 655,
+              "EndOffset": 677,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 1
+            },
+            {
+              "Line": 96,
+              "Offset": 711,
+              "EndOffset": 713,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 96,
+              "Offset": 711,
+              "EndOffset": 731,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 1
+            },
+            {
+              "Line": 27,
+              "Offset": 13,
+              "EndOffset": 15,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 27,
+              "Offset": 13,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 47,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 12,
+              "EndOffset": 36,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 7
+            },
+            {
+              "Line": 47,
+              "Offset": 39,
+              "EndOffset": 41,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 39,
+              "EndOffset": 57,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 7
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\AzureAiChatService.cs": {
+      "DataChronicles.Api.Services.AzureAiChatService": {
+        "System.Boolean DataChronicles.Api.Services.AzureAiChatService::get_Enabled()": {
+          "Lines": {
+            "44": 21
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 15
+            },
+            {
+              "Line": 44,
+              "Offset": 24,
+              "EndOffset": 26,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 15
+            },
+            {
+              "Line": 44,
+              "Offset": 11,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            },
+            {
+              "Line": 44,
+              "Offset": 24,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 6
+            }
+          ]
+        },
+        "System.Boolean DataChronicles.Api.Services.AzureAiChatService::IsSet(System.String)": {
+          "Lines": {
+            "47": 51
+          },
+          "Branches": [
+            {
+              "Line": 47,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 45
+            },
+            {
+              "Line": 47,
+              "Offset": 6,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.AzureAiChatService::.ctor(System.Net.Http.HttpClient,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger`1<DataChronicles.Api.Services.AzureAiChatService>)": {
+          "Lines": {
+            "28": 9,
+            "29": 9,
+            "30": 9,
+            "31": 9,
+            "32": 9,
+            "33": 9,
+            "34": 9,
+            "35": 9,
+            "36": 9,
+            "38": 9,
+            "39": 6,
+            "40": 9
+          },
+          "Branches": [
+            {
+              "Line": 32,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 32,
+              "Offset": 35,
+              "EndOffset": 41,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 7
+            },
+            {
+              "Line": 36,
+              "Offset": 106,
+              "EndOffset": 108,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 36,
+              "Offset": 106,
+              "EndOffset": 111,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 8
+            },
+            {
+              "Line": 38,
+              "Offset": 129,
+              "EndOffset": 131,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 6
+            },
+            {
+              "Line": 38,
+              "Offset": 129,
+              "EndOffset": 159,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 9
+            }
+          ]
+        }
+      },
+      "DataChronicles.Api.Services.AzureAiChatService/<CompleteAsync>d__10": {
+        "System.Void DataChronicles.Api.Services.AzureAiChatService/<CompleteAsync>d__10::MoveNext()": {
+          "Lines": {
+            "54": 7,
+            "55": 7,
+            "56": 1,
+            "60": 6,
+            "61": 6,
+            "63": 6,
+            "64": 6,
+            "65": 6,
+            "67": 6,
+            "68": 6,
+            "69": 6,
+            "70": 6,
+            "71": 6,
+            "72": 6,
+            "73": 6,
+            "74": 6,
+            "75": 6,
+            "76": 6,
+            "77": 6,
+            "80": 6,
+            "81": 6,
+            "82": 6,
+            "83": 6,
+            "85": 6,
+            "86": 6,
+            "88": 4,
+            "89": 4,
+            "90": 4,
+            "92": 2,
+            "93": 2,
+            "94": 2,
+            "95": 2,
+            "96": 2,
+            "98": 7
+          },
+          "Branches": [
+            {
+              "Line": 55,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 55,
+              "Offset": 35,
+              "EndOffset": 44,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            },
+            {
+              "Line": 60,
+              "Offset": 67,
+              "EndOffset": 69,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 60,
+              "Offset": 67,
+              "EndOffset": 93,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 5
+            },
+            {
+              "Line": 63,
+              "Offset": 106,
+              "EndOffset": 108,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 63,
+              "Offset": 106,
+              "EndOffset": 209,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 5
+            },
+            {
+              "Line": 67,
+              "Offset": 242,
+              "EndOffset": 244,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 67,
+              "Offset": 242,
+              "EndOffset": 247,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 5
+            },
+            {
+              "Line": 89,
+              "Offset": 709,
+              "EndOffset": 711,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 89,
+              "Offset": 709,
+              "EndOffset": 715,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 4
+            },
+            {
+              "Line": 89,
+              "Offset": 727,
+              "EndOffset": 729,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 89,
+              "Offset": 727,
+              "EndOffset": 733,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 4
+            },
+            {
+              "Line": 89,
+              "Offset": 744,
+              "EndOffset": 746,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 89,
+              "Offset": 744,
+              "EndOffset": 750,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 4
+            },
+            {
+              "Line": 89,
+              "Offset": 761,
+              "EndOffset": 763,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 89,
+              "Offset": 761,
+              "EndOffset": 767,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 4
+            },
+            {
+              "Line": 90,
+              "Offset": 788,
+              "EndOffset": 790,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 4
+            },
+            {
+              "Line": 90,
+              "Offset": 788,
+              "EndOffset": 803,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\AzureAiEmbeddingService.cs": {
+      "DataChronicles.Api.Services.AzureAiEmbeddingService": {
+        "System.Double DataChronicles.Api.Services.AzureAiEmbeddingService::get_SimilarityThreshold()": {
+          "Lines": {
+            "43": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean DataChronicles.Api.Services.AzureAiEmbeddingService::get_Enabled()": {
+          "Lines": {
+            "46": 14
+          },
+          "Branches": [
+            {
+              "Line": 46,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 6
+            },
+            {
+              "Line": 46,
+              "Offset": 24,
+              "EndOffset": 26,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 6
+            },
+            {
+              "Line": 46,
+              "Offset": 11,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 8
+            },
+            {
+              "Line": 46,
+              "Offset": 24,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 8
+            }
+          ]
+        },
+        "System.Boolean DataChronicles.Api.Services.AzureAiEmbeddingService::IsSet(System.String)": {
+          "Lines": {
+            "49": 26
+          },
+          "Branches": [
+            {
+              "Line": 49,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 16
+            },
+            {
+              "Line": 49,
+              "Offset": 6,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 10
+            }
+          ]
+        },
+        "System.Double DataChronicles.Api.Services.AzureAiEmbeddingService::Cosine(System.Single[],System.Single[])": {
+          "Lines": {
+            "113": 8,
+            "114": 8,
+            "115": 1,
+            "117": 21,
+            "118": 42,
+            "119": 14,
+            "120": 14,
+            "121": 14,
+            "122": 14,
+            "123": 14,
+            "124": 7,
+            "125": 0,
+            "126": 7,
+            "127": 8
+          },
+          "Branches": [
+            {
+              "Line": 114,
+              "Offset": 2,
+              "EndOffset": 4,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 7
+            },
+            {
+              "Line": 114,
+              "Offset": 5,
+              "EndOffset": 7,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 7
+            },
+            {
+              "Line": 114,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 7
+            },
+            {
+              "Line": 114,
+              "Offset": 2,
+              "EndOffset": 24,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 114,
+              "Offset": 5,
+              "EndOffset": 24,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 114,
+              "Offset": 9,
+              "EndOffset": 24,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 114,
+              "Offset": 27,
+              "EndOffset": 29,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 114,
+              "Offset": 27,
+              "EndOffset": 45,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 7
+            },
+            {
+              "Line": 118,
+              "Offset": 138,
+              "EndOffset": 80,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 14
+            },
+            {
+              "Line": 118,
+              "Offset": 138,
+              "EndOffset": 140,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 7
+            },
+            {
+              "Line": 124,
+              "Offset": 150,
+              "EndOffset": 152,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 7
+            },
+            {
+              "Line": 124,
+              "Offset": 150,
+              "EndOffset": 166,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 171,
+              "EndOffset": 173,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 171,
+              "EndOffset": 186,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 7
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.AzureAiEmbeddingService::.ctor(System.Net.Http.HttpClient,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger`1<DataChronicles.Api.Services.AzureAiEmbeddingService>)": {
+          "Lines": {
+            "27": 9,
+            "28": 9,
+            "29": 9,
+            "30": 9,
+            "31": 9,
+            "32": 9,
+            "33": 9,
+            "34": 9,
+            "35": 9,
+            "36": 9,
+            "38": 9,
+            "39": 2,
+            "40": 9
+          },
+          "Branches": [
+            {
+              "Line": 31,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 31,
+              "Offset": 35,
+              "EndOffset": 41,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 8
+            },
+            {
+              "Line": 35,
+              "Offset": 106,
+              "EndOffset": 108,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 106,
+              "EndOffset": 111,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 9
+            },
+            {
+              "Line": 36,
+              "Offset": 140,
+              "EndOffset": 142,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 4
+            },
+            {
+              "Line": 36,
+              "Offset": 140,
+              "EndOffset": 153,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 5
+            },
+            {
+              "Line": 38,
+              "Offset": 167,
+              "EndOffset": 169,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 2
+            },
+            {
+              "Line": 38,
+              "Offset": 167,
+              "EndOffset": 197,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 9
+            }
+          ]
+        }
+      },
+      "DataChronicles.Api.Services.AzureAiEmbeddingService/<>c": {
+        "System.Boolean DataChronicles.Api.Services.AzureAiEmbeddingService/<>c::<EmbedAsync>b__13_0(System.Single[])": {
+          "Lines": {
+            "101": 3
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Services.AzureAiEmbeddingService/<EmbedAsync>d__13": {
+        "System.Void DataChronicles.Api.Services.AzureAiEmbeddingService/<EmbedAsync>d__13::MoveNext()": {
+          "Lines": {
+            "56": 4,
+            "57": 4,
+            "58": 2,
+            "60": 2,
+            "61": 2,
+            "63": 2,
+            "64": 2,
+            "65": 2,
+            "67": 2,
+            "68": 2,
+            "69": 2,
+            "70": 2,
+            "71": 2,
+            "74": 2,
+            "75": 2,
+            "76": 2,
+            "77": 2,
+            "79": 2,
+            "80": 2,
+            "82": 1,
+            "83": 1,
+            "84": 1,
+            "85": 0,
+            "88": 1,
+            "89": 6,
+            "90": 2,
+            "91": 2,
+            "92": 2,
+            "93": 2,
+            "94": 2,
+            "95": 2,
+            "96": 12,
+            "97": 4,
+            "98": 2,
+            "99": 2,
+            "100": 2,
+            "103": 1,
+            "104": 1,
+            "105": 1,
+            "106": 1,
+            "107": 1,
+            "109": 4
+          },
+          "Branches": [
+            {
+              "Line": 57,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 57,
+              "Offset": 30,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 57,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 57,
+              "Offset": 51,
+              "EndOffset": 60,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 60,
+              "Offset": 83,
+              "EndOffset": 85,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 60,
+              "Offset": 83,
+              "EndOffset": 109,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 2
+            },
+            {
+              "Line": 63,
+              "Offset": 122,
+              "EndOffset": 124,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 122,
+              "EndOffset": 225,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 2
+            },
+            {
+              "Line": 67,
+              "Offset": 258,
+              "EndOffset": 260,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 258,
+              "EndOffset": 263,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 2
+            },
+            {
+              "Line": 84,
+              "Offset": 688,
+              "EndOffset": 690,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 1
+            },
+            {
+              "Line": 84,
+              "Offset": 688,
+              "EndOffset": 706,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 84,
+              "Offset": 711,
+              "EndOffset": 713,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 84,
+              "Offset": 711,
+              "EndOffset": 720,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 1
+            },
+            {
+              "Line": 89,
+              "Offset": 1095,
+              "EndOffset": 754,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 2
+            },
+            {
+              "Line": 94,
+              "Offset": 860,
+              "EndOffset": 862,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 860,
+              "EndOffset": 869,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 2
+            },
+            {
+              "Line": 96,
+              "Offset": 977,
+              "EndOffset": 900,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 4
+            },
+            {
+              "Line": 96,
+              "Offset": 977,
+              "EndOffset": 979,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 2
+            },
+            {
+              "Line": 98,
+              "Offset": 986,
+              "EndOffset": 988,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 2
+            },
+            {
+              "Line": 98,
+              "Offset": 986,
+              "EndOffset": 1006,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 98,
+              "Offset": 1011,
+              "EndOffset": 1013,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 2
+            },
+            {
+              "Line": 98,
+              "Offset": 1011,
+              "EndOffset": 1032,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 2
+            },
+            {
+              "Line": 89,
+              "Offset": 1095,
+              "EndOffset": 1100,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 1
+            },
+            {
+              "Line": 101,
+              "Offset": 1142,
+              "EndOffset": 1144,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 1
+            },
+            {
+              "Line": 101,
+              "Offset": 1142,
+              "EndOffset": 1152,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\BlobStorageService.cs": {
+      "DataChronicles.Api.Services.BlobStorageService": {
+        "System.Boolean DataChronicles.Api.Services.BlobStorageService::get_Enabled()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Void DataChronicles.Api.Services.BlobStorageService::.ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger`1<DataChronicles.Api.Services.BlobStorageService>)": {
+          "Lines": {
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "21": 1,
+            "23": 1,
+            "24": 1,
+            "25": 1,
+            "26": 1,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 1
+          },
+          "Branches": [
+            {
+              "Line": 21,
+              "Offset": 39,
+              "EndOffset": 41,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 39,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 23,
+              "Offset": 54,
+              "EndOffset": 56,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 23,
+              "Offset": 54,
+              "EndOffset": 70,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 23,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 23,
+              "Offset": 73,
+              "EndOffset": 100,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "DataChronicles.Api.Services.BlobStorageService/<UploadAsync>d__5": {
+        "System.Void DataChronicles.Api.Services.BlobStorageService/<UploadAsync>d__5::MoveNext()": {
+          "Lines": {
+            "42": 1,
+            "43": 2,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 1
+          },
+          "Branches": [
+            {
+              "Line": 43,
+              "Offset": 31,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 43,
+              "Offset": 31,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\ChatService.cs": {
+      "DataChronicles.Api.Services.ChatService": {
+        "System.String DataChronicles.Api.Services.ChatService::BuildGroundingPrompt(System.Collections.Generic.List`1<DataChronicles.Api.Models.OutputTicket>,System.Collections.Generic.List`1<DataChronicles.Api.Models.CategorySummary>)": {
+          "Lines": {
+            "122": 2,
+            "123": 2,
+            "124": 2,
+            "125": 2,
+            "126": 2,
+            "127": 2,
+            "128": 2,
+            "129": 2,
+            "130": 2,
+            "131": 2,
+            "132": 2,
+            "133": 14,
+            "134": 4,
+            "135": 2,
+            "137": 6,
+            "138": 6,
+            "139": 6,
+            "140": 2,
+            "142": 6,
+            "143": 6,
+            "144": 6,
+            "145": 2,
+            "146": 2,
+            "148": 2,
+            "149": 4,
+            "150": 4,
+            "151": 0,
+            "152": 2,
+            "153": 2,
+            "154": 2,
+            "155": 2,
+            "156": 2,
+            "158": 2,
+            "159": 14,
+            "160": 4,
+            "162": 2,
+            "163": 2
+          },
+          "Branches": [
+            {
+              "Line": 133,
+              "Offset": 268,
+              "EndOffset": 124,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 133,
+              "Offset": 268,
+              "EndOffset": 273,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 153,
+              "Offset": 860,
+              "EndOffset": 862,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 153,
+              "Offset": 860,
+              "EndOffset": 886,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 159,
+              "Offset": 1125,
+              "EndOffset": 937,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 4
+            },
+            {
+              "Line": 159,
+              "Offset": 1125,
+              "EndOffset": 1130,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.ChatService::.ctor(DataChronicles.Api.Services.DataChroniclesDbContext,DataChronicles.Api.Services.AzureAiChatService)": {
+          "Lines": {
+            "21": 7,
+            "22": 7,
+            "23": 7,
+            "24": 7,
+            "25": 7
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Services.ChatService/<>c": {
+        "System.Boolean DataChronicles.Api.Services.ChatService/<>c::<AnswerAsync>b__3_3(DataChronicles.Api.Models.OutputTicket)": {
+          "Lines": {
+            "76": 4
+          },
+          "Branches": []
+        },
+        "System.Boolean DataChronicles.Api.Services.ChatService/<>c::<AnswerAsync>b__3_4(DataChronicles.Api.Models.OutputTicket)": {
+          "Lines": {
+            "77": 4
+          },
+          "Branches": []
+        },
+        "System.Boolean DataChronicles.Api.Services.ChatService/<>c::<AnswerAsync>b__3_5(DataChronicles.Api.Models.OutputTicket)": {
+          "Lines": {
+            "78": 4
+          },
+          "Branches": []
+        },
+        "System.Boolean DataChronicles.Api.Services.ChatService/<>c::<AnswerAsync>b__3_6(DataChronicles.Api.Models.OutputTicket)": {
+          "Lines": {
+            "86": 4
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Services.ChatService/<>c::<AnswerAsync>b__3_7(DataChronicles.Api.Models.CategorySummary)": {
+          "Lines": {
+            "93": 3
+          },
+          "Branches": []
+        },
+        "<>f__AnonymousType6`2<System.String,System.String> DataChronicles.Api.Services.ChatService/<>c::<AnswerAsync>b__3_8(DataChronicles.Api.Models.OutputTicket)": {
+          "Lines": {
+            "101": 3
+          },
+          "Branches": []
+        },
+        "System.Boolean DataChronicles.Api.Services.ChatService/<>c::<AnswerAsync>b__3_9(System.Linq.IGrouping`2<<>f__AnonymousType6`2<System.String,System.String>,DataChronicles.Api.Models.OutputTicket>)": {
+          "Lines": {
+            "102": 2
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Services.ChatService/<>c::<AnswerAsync>b__3_10(System.Linq.IGrouping`2<<>f__AnonymousType6`2<System.String,System.String>,DataChronicles.Api.Models.OutputTicket>)": {
+          "Lines": {
+            "103": 1
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Services.ChatService/<>c::<AnswerAsync>b__3_1(DataChronicles.Api.Models.CategorySummary)": {
+          "Lines": {
+            "111": 3
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Services.ChatService/<>c__DisplayClass3_0": {
+        "System.Boolean DataChronicles.Api.Services.ChatService/<>c__DisplayClass3_0::<AnswerAsync>b__2(DataChronicles.Api.Models.CategorySummary)": {
+          "Lines": {
+            "57": 12,
+            "58": 12
+          },
+          "Branches": [
+            {
+              "Line": 57,
+              "Offset": 22,
+              "EndOffset": 24,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 9
+            },
+            {
+              "Line": 57,
+              "Offset": 22,
+              "EndOffset": 61,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "DataChronicles.Api.Services.ChatService/<AnswerAsync>d__3": {
+        "System.Void DataChronicles.Api.Services.ChatService/<AnswerAsync>d__3::MoveNext()": {
+          "Lines": {
+            "28": 12,
+            "29": 12,
+            "30": 1,
+            "32": 11,
+            "33": 11,
+            "34": 11,
+            "36": 11,
+            "37": 11,
+            "38": 1,
+            "40": 10,
+            "41": 10,
+            "46": 10,
+            "47": 2,
+            "48": 2,
+            "49": 2,
+            "50": 1,
+            "51": 1,
+            "54": 9,
+            "55": 3,
+            "59": 3,
+            "60": 0,
+            "61": 0,
+            "63": 3,
+            "67": 6,
+            "68": 1,
+            "69": 1,
+            "70": 1,
+            "74": 5,
+            "75": 1,
+            "79": 1,
+            "80": 1,
+            "84": 4,
+            "85": 1,
+            "87": 1,
+            "91": 3,
+            "92": 1,
+            "94": 1,
+            "98": 2,
+            "99": 1,
+            "100": 1,
+            "104": 1,
+            "105": 1,
+            "106": 1,
+            "107": 1,
+            "112": 1,
+            "113": 1,
+            "114": 12
+          },
+          "Branches": [
+            {
+              "Line": 29,
+              "Offset": 70,
+              "EndOffset": 72,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 29,
+              "Offset": 70,
+              "EndOffset": 83,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 11
+            },
+            {
+              "Line": 33,
+              "Offset": 131,
+              "EndOffset": 133,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 11
+            },
+            {
+              "Line": 33,
+              "Offset": 131,
+              "EndOffset": 251,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 11
+            },
+            {
+              "Line": 37,
+              "Offset": 408,
+              "EndOffset": 410,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 37,
+              "Offset": 408,
+              "EndOffset": 421,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 10
+            },
+            {
+              "Line": 46,
+              "Offset": 475,
+              "EndOffset": 477,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 3
+            },
+            {
+              "Line": 46,
+              "Offset": 475,
+              "EndOffset": 486,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 7
+            },
+            {
+              "Line": 46,
+              "Offset": 491,
+              "EndOffset": 496,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 2
+            },
+            {
+              "Line": 49,
+              "Offset": 672,
+              "EndOffset": 674,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 1
+            },
+            {
+              "Line": 49,
+              "Offset": 672,
+              "EndOffset": 686,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 1
+            },
+            {
+              "Line": 46,
+              "Offset": 491,
+              "EndOffset": 694,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 9
+            },
+            {
+              "Line": 54,
+              "Offset": 715,
+              "EndOffset": 717,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 6
+            },
+            {
+              "Line": 54,
+              "Offset": 738,
+              "EndOffset": 740,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 6
+            },
+            {
+              "Line": 54,
+              "Offset": 715,
+              "EndOffset": 763,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 3
+            },
+            {
+              "Line": 54,
+              "Offset": 738,
+              "EndOffset": 763,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 3
+            },
+            {
+              "Line": 54,
+              "Offset": 768,
+              "EndOffset": 773,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 3
+            },
+            {
+              "Line": 59,
+              "Offset": 821,
+              "EndOffset": 826,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 821,
+              "EndOffset": 971,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 3
+            },
+            {
+              "Line": 54,
+              "Offset": 768,
+              "EndOffset": 1071,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 6
+            },
+            {
+              "Line": 67,
+              "Offset": 1092,
+              "EndOffset": 1094,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 5
+            },
+            {
+              "Line": 67,
+              "Offset": 1115,
+              "EndOffset": 1117,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 5
+            },
+            {
+              "Line": 67,
+              "Offset": 1138,
+              "EndOffset": 1140,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 5
+            },
+            {
+              "Line": 67,
+              "Offset": 1092,
+              "EndOffset": 1163,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 1
+            },
+            {
+              "Line": 67,
+              "Offset": 1115,
+              "EndOffset": 1163,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 1
+            },
+            {
+              "Line": 67,
+              "Offset": 1138,
+              "EndOffset": 1163,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 1
+            },
+            {
+              "Line": 67,
+              "Offset": 1168,
+              "EndOffset": 1173,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 1
+            },
+            {
+              "Line": 67,
+              "Offset": 1168,
+              "EndOffset": 1323,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 5
+            },
+            {
+              "Line": 74,
+              "Offset": 1344,
+              "EndOffset": 1346,
+              "Path": 0,
+              "Ordinal": 28,
+              "Hits": 4
+            },
+            {
+              "Line": 74,
+              "Offset": 1367,
+              "EndOffset": 1369,
+              "Path": 0,
+              "Ordinal": 30,
+              "Hits": 4
+            },
+            {
+              "Line": 74,
+              "Offset": 1390,
+              "EndOffset": 1392,
+              "Path": 0,
+              "Ordinal": 32,
+              "Hits": 4
+            },
+            {
+              "Line": 74,
+              "Offset": 1344,
+              "EndOffset": 1415,
+              "Path": 1,
+              "Ordinal": 29,
+              "Hits": 1
+            },
+            {
+              "Line": 74,
+              "Offset": 1367,
+              "EndOffset": 1415,
+              "Path": 1,
+              "Ordinal": 31,
+              "Hits": 1
+            },
+            {
+              "Line": 74,
+              "Offset": 1390,
+              "EndOffset": 1415,
+              "Path": 1,
+              "Ordinal": 33,
+              "Hits": 1
+            },
+            {
+              "Line": 74,
+              "Offset": 1420,
+              "EndOffset": 1425,
+              "Path": 0,
+              "Ordinal": 34,
+              "Hits": 1
+            },
+            {
+              "Line": 79,
+              "Offset": 1688,
+              "EndOffset": 1690,
+              "Path": 0,
+              "Ordinal": 36,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 1688,
+              "EndOffset": 1697,
+              "Path": 1,
+              "Ordinal": 37,
+              "Hits": 1
+            },
+            {
+              "Line": 74,
+              "Offset": 1420,
+              "EndOffset": 1752,
+              "Path": 1,
+              "Ordinal": 35,
+              "Hits": 4
+            },
+            {
+              "Line": 84,
+              "Offset": 1777,
+              "EndOffset": 1782,
+              "Path": 0,
+              "Ordinal": 38,
+              "Hits": 1
+            },
+            {
+              "Line": 84,
+              "Offset": 1777,
+              "EndOffset": 1913,
+              "Path": 1,
+              "Ordinal": 39,
+              "Hits": 3
+            },
+            {
+              "Line": 91,
+              "Offset": 1934,
+              "EndOffset": 1936,
+              "Path": 0,
+              "Ordinal": 40,
+              "Hits": 2
+            },
+            {
+              "Line": 91,
+              "Offset": 1957,
+              "EndOffset": 1959,
+              "Path": 0,
+              "Ordinal": 42,
+              "Hits": 2
+            },
+            {
+              "Line": 91,
+              "Offset": 1980,
+              "EndOffset": 1982,
+              "Path": 0,
+              "Ordinal": 44,
+              "Hits": 2
+            },
+            {
+              "Line": 91,
+              "Offset": 1934,
+              "EndOffset": 2005,
+              "Path": 1,
+              "Ordinal": 41,
+              "Hits": 1
+            },
+            {
+              "Line": 91,
+              "Offset": 1957,
+              "EndOffset": 2005,
+              "Path": 1,
+              "Ordinal": 43,
+              "Hits": 1
+            },
+            {
+              "Line": 91,
+              "Offset": 1980,
+              "EndOffset": 2005,
+              "Path": 1,
+              "Ordinal": 45,
+              "Hits": 1
+            },
+            {
+              "Line": 91,
+              "Offset": 2010,
+              "EndOffset": 2015,
+              "Path": 0,
+              "Ordinal": 46,
+              "Hits": 1
+            },
+            {
+              "Line": 91,
+              "Offset": 2010,
+              "EndOffset": 2153,
+              "Path": 1,
+              "Ordinal": 47,
+              "Hits": 2
+            },
+            {
+              "Line": 98,
+              "Offset": 2174,
+              "EndOffset": 2176,
+              "Path": 0,
+              "Ordinal": 48,
+              "Hits": 1
+            },
+            {
+              "Line": 98,
+              "Offset": 2197,
+              "EndOffset": 2199,
+              "Path": 0,
+              "Ordinal": 50,
+              "Hits": 1
+            },
+            {
+              "Line": 98,
+              "Offset": 2174,
+              "EndOffset": 2222,
+              "Path": 1,
+              "Ordinal": 49,
+              "Hits": 1
+            },
+            {
+              "Line": 98,
+              "Offset": 2197,
+              "EndOffset": 2222,
+              "Path": 1,
+              "Ordinal": 51,
+              "Hits": 1
+            },
+            {
+              "Line": 98,
+              "Offset": 2227,
+              "EndOffset": 2232,
+              "Path": 0,
+              "Ordinal": 52,
+              "Hits": 1
+            },
+            {
+              "Line": 105,
+              "Offset": 2369,
+              "EndOffset": 2371,
+              "Path": 0,
+              "Ordinal": 54,
+              "Hits": 1
+            },
+            {
+              "Line": 105,
+              "Offset": 2369,
+              "EndOffset": 2399,
+              "Path": 1,
+              "Ordinal": 55,
+              "Hits": 0
+            },
+            {
+              "Line": 98,
+              "Offset": 2227,
+              "EndOffset": 2410,
+              "Path": 1,
+              "Ordinal": 53,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\DataChroniclesDbContext.cs": {
+      "DataChronicles.Api.Services.DataChroniclesDbContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<DataChronicles.Api.Models.OutputTicket> DataChronicles.Api.Services.DataChroniclesDbContext::get_Tickets()": {
+          "Lines": {
+            "10": 33
+          },
+          "Branches": []
+        },
+        "System.Void DataChronicles.Api.Services.DataChroniclesDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<DataChronicles.Api.Services.DataChroniclesDbContext>)": {
+          "Lines": {
+            "8": 39
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\ExcelInputReader.cs": {
+      "DataChronicles.Api.Services.InputValidationException": {
+        "System.Void DataChronicles.Api.Services.InputValidationException::.ctor(System.String)": {
+          "Lines": {
+            "9": 12
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Services.ExcelInputReader": {
+        "System.Collections.Generic.List`1<DataChronicles.Api.Models.InputTicket> DataChronicles.Api.Services.ExcelInputReader::Read(Microsoft.AspNetCore.Http.IFormFile)": {
+          "Lines": {
+            "22": 7,
+            "24": 7,
+            "25": 1,
+            "27": 6,
+            "28": 6,
+            "29": 2,
+            "33": 4,
+            "34": 4,
+            "35": 3,
+            "36": 1,
+            "37": 1,
+            "38": 1,
+            "41": 3,
+            "42": 3,
+            "43": 3,
+            "44": 3,
+            "46": 3,
+            "47": 3,
+            "48": 0,
+            "50": 3,
+            "51": 3,
+            "52": 0,
+            "54": 3,
+            "56": 3,
+            "57": 3,
+            "58": 34,
+            "59": 34,
+            "60": 34,
+            "61": 34,
+            "62": 34,
+            "63": 34,
+            "64": 34,
+            "65": 34,
+            "66": 3,
+            "68": 3,
+            "69": 0,
+            "71": 3,
+            "73": 3
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 2,
+              "EndOffset": 4,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 7
+            },
+            {
+              "Line": 24,
+              "Offset": 2,
+              "EndOffset": 16,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 24,
+              "Offset": 19,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 6
+            },
+            {
+              "Line": 28,
+              "Offset": 65,
+              "EndOffset": 67,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 28,
+              "Offset": 65,
+              "EndOffset": 78,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 4
+            },
+            {
+              "Line": 43,
+              "Offset": 131,
+              "EndOffset": 133,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 131,
+              "EndOffset": 145,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 3
+            },
+            {
+              "Line": 47,
+              "Offset": 165,
+              "EndOffset": 167,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 165,
+              "EndOffset": 178,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 3
+            },
+            {
+              "Line": 51,
+              "Offset": 206,
+              "EndOffset": 208,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 206,
+              "EndOffset": 219,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 3
+            },
+            {
+              "Line": 68,
+              "Offset": 324,
+              "EndOffset": 326,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 324,
+              "EndOffset": 337,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.Int32> DataChronicles.Api.Services.ExcelInputReader::BuildColumnMap(System.Collections.Generic.IReadOnlyList`1<ClosedXML.Excel.IXLCell>)": {
+          "Lines": {
+            "76": 3,
+            "77": 3,
+            "78": 33,
+            "79": 12,
+            "80": 12,
+            "81": 12,
+            "82": 12,
+            "83": 12,
+            "84": 3,
+            "85": 3
+          },
+          "Branches": [
+            {
+              "Line": 78,
+              "Offset": 95,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 12
+            },
+            {
+              "Line": 81,
+              "Offset": 48,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 12
+            },
+            {
+              "Line": 81,
+              "Offset": 48,
+              "EndOffset": 62,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 67,
+              "EndOffset": 69,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 12
+            },
+            {
+              "Line": 81,
+              "Offset": 67,
+              "EndOffset": 88,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 12
+            },
+            {
+              "Line": 78,
+              "Offset": 95,
+              "EndOffset": 97,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.String DataChronicles.Api.Services.ExcelInputReader::GetCell(ClosedXML.Excel.IXLRow,System.Collections.Generic.Dictionary`2<System.String,System.Int32>,System.String,System.Int32)": {
+          "Lines": {
+            "88": 136,
+            "89": 136,
+            "90": 136,
+            "91": 136
+          },
+          "Branches": [
+            {
+              "Line": 89,
+              "Offset": 10,
+              "EndOffset": 12,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 89,
+              "Offset": 10,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 136
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.ExcelInputReader::.cctor()": {
+          "Lines": {
+            "19": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\ExcelOutputWriter.cs": {
+      "DataChronicles.Api.Services.ExcelOutputWriter": {
+        "System.Byte[] DataChronicles.Api.Services.ExcelOutputWriter::Generate(DataChronicles.Api.Models.CategorizationResult)": {
+          "Lines": {
+            "16": 2,
+            "17": 2,
+            "19": 2,
+            "20": 2,
+            "21": 2,
+            "24": 2,
+            "25": 2,
+            "27": 2,
+            "28": 2
+          },
+          "Branches": []
+        },
+        "System.Void DataChronicles.Api.Services.ExcelOutputWriter::BuildSummarySheet(OfficeOpenXml.ExcelPackage,DataChronicles.Api.Models.CategorizationResult)": {
+          "Lines": {
+            "31": 2,
+            "32": 2,
+            "34": 2,
+            "35": 2,
+            "36": 2,
+            "37": 2,
+            "38": 2,
+            "39": 2,
+            "40": 2,
+            "42": 2,
+            "43": 2,
+            "44": 2,
+            "45": 2,
+            "46": 2,
+            "47": 2,
+            "48": 2,
+            "49": 2,
+            "53": 2,
+            "54": 2,
+            "55": 2,
+            "56": 2,
+            "57": 2,
+            "58": 2,
+            "59": 2,
+            "60": 2,
+            "61": 2,
+            "63": 2,
+            "64": 20,
+            "65": 7,
+            "66": 7,
+            "67": 7,
+            "68": 7,
+            "69": 7,
+            "70": 7,
+            "71": 7,
+            "73": 2,
+            "76": 2,
+            "77": 2,
+            "78": 2,
+            "79": 2,
+            "80": 2,
+            "81": 2,
+            "82": 2,
+            "83": 2,
+            "84": 2,
+            "85": 2,
+            "86": 2,
+            "87": 2,
+            "90": 2,
+            "91": 2,
+            "92": 2,
+            "93": 2
+          },
+          "Branches": [
+            {
+              "Line": 64,
+              "Offset": 679,
+              "EndOffset": 525,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 7
+            },
+            {
+              "Line": 64,
+              "Offset": 679,
+              "EndOffset": 684,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 76,
+              "Offset": 723,
+              "EndOffset": 728,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 76,
+              "Offset": 723,
+              "EndOffset": 874,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.ExcelOutputWriter::BuildDataSheet(OfficeOpenXml.ExcelPackage,System.Collections.Generic.List`1<DataChronicles.Api.Models.OutputTicket>)": {
+          "Lines": {
+            "96": 2,
+            "97": 2,
+            "99": 2,
+            "100": 2,
+            "101": 2,
+            "102": 2,
+            "103": 2,
+            "104": 44,
+            "105": 20,
+            "106": 2,
+            "107": 2,
+            "108": 2,
+            "109": 2,
+            "110": 2,
+            "111": 2,
+            "113": 2,
+            "114": 42,
+            "115": 18,
+            "116": 18,
+            "117": 18,
+            "118": 18,
+            "119": 18,
+            "120": 18,
+            "121": 18,
+            "122": 18,
+            "123": 18,
+            "124": 18,
+            "125": 18,
+            "126": 18,
+            "127": 18,
+            "128": 18,
+            "131": 2,
+            "132": 44,
+            "133": 20,
+            "134": 2
+          },
+          "Branches": [
+            {
+              "Line": 104,
+              "Offset": 160,
+              "EndOffset": 117,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 20
+            },
+            {
+              "Line": 104,
+              "Offset": 160,
+              "EndOffset": 162,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 114,
+              "Offset": 617,
+              "EndOffset": 280,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 18
+            },
+            {
+              "Line": 125,
+              "Offset": 558,
+              "EndOffset": 560,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 16
+            },
+            {
+              "Line": 125,
+              "Offset": 558,
+              "EndOffset": 567,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 114,
+              "Offset": 617,
+              "EndOffset": 622,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 132,
+              "Offset": 701,
+              "EndOffset": 663,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 20
+            },
+            {
+              "Line": 132,
+              "Offset": 701,
+              "EndOffset": 703,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.ExcelOutputWriter::BuildGroupsSheet(OfficeOpenXml.ExcelPackage,System.Collections.Generic.List`1<DataChronicles.Api.Models.IssueGroup>)": {
+          "Lines": {
+            "137": 2,
+            "138": 2,
+            "140": 2,
+            "141": 2,
+            "142": 2,
+            "143": 2,
+            "144": 2,
+            "145": 2,
+            "146": 2,
+            "149": 2,
+            "150": 20,
+            "151": 8,
+            "152": 2,
+            "153": 2,
+            "154": 2,
+            "155": 2,
+            "156": 2,
+            "157": 2,
+            "159": 2,
+            "160": 10,
+            "161": 2,
+            "162": 2,
+            "163": 2,
+            "164": 2,
+            "165": 2,
+            "166": 2,
+            "167": 2,
+            "168": 2,
+            "169": 1,
+            "171": 2,
+            "172": 20,
+            "173": 8,
+            "174": 2
+          },
+          "Branches": [
+            {
+              "Line": 150,
+              "Offset": 219,
+              "EndOffset": 176,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 8
+            },
+            {
+              "Line": 150,
+              "Offset": 219,
+              "EndOffset": 221,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 160,
+              "Offset": 467,
+              "EndOffset": 336,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 160,
+              "Offset": 467,
+              "EndOffset": 472,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 168,
+              "Offset": 502,
+              "EndOffset": 504,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 168,
+              "Offset": 502,
+              "EndOffset": 528,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 2
+            },
+            {
+              "Line": 172,
+              "Offset": 589,
+              "EndOffset": 551,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 8
+            },
+            {
+              "Line": 172,
+              "Offset": 589,
+              "EndOffset": 591,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 2
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\GeneratedFileStore.cs": {
+      "DataChronicles.Api.Services.GeneratedFileStore": {
+        "System.Void DataChronicles.Api.Services.GeneratedFileStore::Save(System.String,System.Byte[],System.String)": {
+          "Lines": {
+            "14": 1
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.ValueTuple`2<System.Byte[],System.String>> DataChronicles.Api.Services.GeneratedFileStore::Get(System.String)": {
+          "Lines": {
+            "17": 2
+          },
+          "Branches": [
+            {
+              "Line": 17,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 17,
+              "Offset": 14,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.GeneratedFileStore::.ctor()": {
+          "Lines": {
+            "12": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\SampleDataService.cs": {
+      "DataChronicles.Api.Services.SampleDataService": {
+        "System.Byte[] DataChronicles.Api.Services.SampleDataService::Generate(System.Int32)": {
+          "Lines": {
+            "23": 4,
+            "24": 4,
+            "25": 4,
+            "27": 4,
+            "28": 4,
+            "29": 4,
+            "30": 4,
+            "31": 4,
+            "33": 176,
+            "34": 84,
+            "35": 84,
+            "36": 84,
+            "37": 84,
+            "38": 84,
+            "39": 84,
+            "40": 84,
+            "42": 4,
+            "43": 4,
+            "44": 4,
+            "45": 4,
+            "46": 4
+          },
+          "Branches": [
+            {
+              "Line": 33,
+              "Offset": 362,
+              "EndOffset": 148,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 84
+            },
+            {
+              "Line": 33,
+              "Offset": 362,
+              "EndOffset": 367,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 4
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.SampleDataService::.cctor()": {
+          "Lines": {
+            "8": 1,
+            "9": 1,
+            "10": 1,
+            "11": 1,
+            "12": 1,
+            "13": 1,
+            "14": 1,
+            "15": 1,
+            "16": 1,
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\TextAnalysisService.cs": {
+      "DataChronicles.Api.Services.TextAnalysisService": {
+        "System.String DataChronicles.Api.Services.TextAnalysisService::Severity(System.String)": {
+          "Lines": {
+            "20": 19,
+            "21": 19,
+            "22": 27,
+            "23": 21,
+            "24": 1,
+            "25": 19
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 32,
+              "EndOffset": 34,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 8
+            },
+            {
+              "Line": 22,
+              "Offset": 32,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 11
+            },
+            {
+              "Line": 23,
+              "Offset": 66,
+              "EndOffset": 68,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 10
+            },
+            {
+              "Line": 23,
+              "Offset": 66,
+              "EndOffset": 76,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.String DataChronicles.Api.Services.TextAnalysisService::Sentiment(System.String)": {
+          "Lines": {
+            "28": 18,
+            "29": 18,
+            "30": 18,
+            "31": 20,
+            "32": 29,
+            "33": 3,
+            "34": 18
+          },
+          "Branches": [
+            {
+              "Line": 31,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 31,
+              "Offset": 40,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 16
+            },
+            {
+              "Line": 32,
+              "Offset": 58,
+              "EndOffset": 60,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 13
+            },
+            {
+              "Line": 32,
+              "Offset": 58,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.TextAnalysisService::.cctor()": {
+          "Lines": {
+            "10": 1,
+            "11": 1,
+            "13": 1,
+            "14": 1,
+            "16": 1,
+            "17": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\TicketProcessingService.cs": {
+      "DataChronicles.Api.Services.TicketProcessingService": {
+        "System.String DataChronicles.Api.Services.TicketProcessingService::DuplicateKey(DataChronicles.Api.Models.OutputTicket)": {
+          "Lines": {
+            "110": 37
+          },
+          "Branches": [
+            {
+              "Line": 110,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 7,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 37
+            }
+          ]
+        },
+        "System.Collections.Generic.List`1<DataChronicles.Api.Models.IssueGroup> DataChronicles.Api.Services.TicketProcessingService::ApplyDeterministicDuplicatesAndGroups(System.Collections.Generic.List`1<DataChronicles.Api.Models.OutputTicket>,System.Collections.Generic.List`1<DataChronicles.Api.Models.OutputTicket>)": {
+          "Lines": {
+            "117": 2,
+            "118": 2,
+            "119": 8,
+            "120": 1,
+            "121": 1,
+            "122": 2,
+            "123": 1,
+            "124": 42,
+            "125": 18,
+            "126": 18,
+            "127": 18,
+            "128": 4,
+            "129": 4,
+            "130": 4,
+            "131": 4,
+            "133": 14,
+            "134": 14,
+            "135": 14,
+            "136": 18,
+            "138": 2,
+            "139": 2,
+            "140": 15,
+            "141": 3,
+            "142": 3,
+            "143": 3,
+            "144": 3,
+            "145": 3,
+            "146": 3,
+            "147": 3,
+            "148": 2,
+            "149": 2,
+            "150": 2
+          },
+          "Branches": [
+            {
+              "Line": 119,
+              "Offset": 71,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 122,
+              "Offset": 47,
+              "EndOffset": 49,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 122,
+              "Offset": 47,
+              "EndOffset": 63,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 119,
+              "Offset": 71,
+              "EndOffset": 73,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 124,
+              "Offset": 185,
+              "EndOffset": 101,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 18
+            },
+            {
+              "Line": 127,
+              "Offset": 134,
+              "EndOffset": 136,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 4
+            },
+            {
+              "Line": 127,
+              "Offset": 134,
+              "EndOffset": 159,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 14
+            },
+            {
+              "Line": 124,
+              "Offset": 185,
+              "EndOffset": 187,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Collections.Generic.List`1<DataChronicles.Api.Models.IssueGroup> DataChronicles.Api.Services.TicketProcessingService::ApplySemanticDuplicatesAndGroups(System.Collections.Generic.List`1<DataChronicles.Api.Models.OutputTicket>,System.Single[][],System.Collections.Generic.List`1<DataChronicles.Api.Models.OutputTicket>,System.Double)": {
+          "Lines": {
+            "159": 1,
+            "160": 1,
+            "161": 0,
+            "162": 0,
+            "163": 1,
+            "165": 8,
+            "166": 3,
+            "167": 3,
+            "168": 3,
+            "169": 12,
+            "170": 3,
+            "171": 3,
+            "172": 7,
+            "173": 3,
+            "174": 9,
+            "175": 0,
+            "176": 0,
+            "177": 0,
+            "178": 0,
+            "179": 3,
+            "180": 1,
+            "181": 1,
+            "182": 1,
+            "183": 1,
+            "184": 3,
+            "187": 1,
+            "188": 1,
+            "189": 8,
+            "190": 3,
+            "191": 3,
+            "192": 12,
+            "193": 2,
+            "194": 5,
+            "195": 1,
+            "196": 11,
+            "197": 1,
+            "198": 3,
+            "200": 1,
+            "201": 2,
+            "202": 1,
+            "203": 1,
+            "204": 1,
+            "205": 3,
+            "206": 2,
+            "207": 1,
+            "208": 1,
+            "209": 1,
+            "210": 1,
+            "211": 1,
+            "212": 1,
+            "213": 1,
+            "214": 1,
+            "215": 0,
+            "216": 1,
+            "217": 1
+          },
+          "Branches": [
+            {
+              "Line": 165,
+              "Offset": 383,
+              "EndOffset": 101,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 3
+            },
+            {
+              "Line": 169,
+              "Offset": 192,
+              "EndOffset": 121,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            },
+            {
+              "Line": 172,
+              "Offset": 147,
+              "EndOffset": 149,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 172,
+              "Offset": 147,
+              "EndOffset": 175,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 169,
+              "Offset": 192,
+              "EndOffset": 194,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 3
+            },
+            {
+              "Line": 174,
+              "Offset": 276,
+              "EndOffset": 205,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 177,
+              "Offset": 251,
+              "EndOffset": 253,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 177,
+              "Offset": 251,
+              "EndOffset": 268,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 174,
+              "Offset": 276,
+              "EndOffset": 278,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 3
+            },
+            {
+              "Line": 179,
+              "Offset": 298,
+              "EndOffset": 300,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 1
+            },
+            {
+              "Line": 179,
+              "Offset": 298,
+              "EndOffset": 307,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 2
+            },
+            {
+              "Line": 179,
+              "Offset": 312,
+              "EndOffset": 314,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 1
+            },
+            {
+              "Line": 179,
+              "Offset": 312,
+              "EndOffset": 357,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 3
+            },
+            {
+              "Line": 165,
+              "Offset": 383,
+              "EndOffset": 388,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 1
+            },
+            {
+              "Line": 189,
+              "Offset": 581,
+              "EndOffset": 408,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 3
+            },
+            {
+              "Line": 192,
+              "Offset": 473,
+              "EndOffset": 423,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 2
+            },
+            {
+              "Line": 194,
+              "Offset": 456,
+              "EndOffset": 458,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 1
+            },
+            {
+              "Line": 194,
+              "Offset": 456,
+              "EndOffset": 465,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 1
+            },
+            {
+              "Line": 192,
+              "Offset": 473,
+              "EndOffset": 475,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 3
+            },
+            {
+              "Line": 196,
+              "Offset": 501,
+              "EndOffset": 503,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 2
+            },
+            {
+              "Line": 196,
+              "Offset": 501,
+              "EndOffset": 539,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 1
+            },
+            {
+              "Line": 189,
+              "Offset": 581,
+              "EndOffset": 586,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 1
+            },
+            {
+              "Line": 205,
+              "Offset": 34,
+              "EndOffset": 36,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 205,
+              "Offset": 34,
+              "EndOffset": 58,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Single[] DataChronicles.Api.Services.TicketProcessingService::ParseEmbedding(System.String)": {
+          "Lines": {
+            "220": 0,
+            "221": 0,
+            "222": 0,
+            "223": 0,
+            "224": 0
+          },
+          "Branches": [
+            {
+              "Line": 221,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 221,
+              "Offset": 9,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String DataChronicles.Api.Services.TicketProcessingService::ResolveBatchSource(System.Collections.Generic.List`1<DataChronicles.Api.Models.OutputTicket>)": {
+          "Lines": {
+            "228": 4,
+            "229": 5,
+            "230": 22,
+            "231": 3,
+            "232": 4
+          },
+          "Branches": [
+            {
+              "Line": 229,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 229,
+              "Offset": 12,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 231,
+              "Offset": 77,
+              "EndOffset": 79,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 231,
+              "Offset": 77,
+              "EndOffset": 86,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Collections.Generic.List`1<DataChronicles.Api.Models.CategorySummary> DataChronicles.Api.Services.TicketProcessingService::BuildSummary(System.Collections.Generic.List`1<DataChronicles.Api.Models.OutputTicket>)": {
+          "Lines": {
+            "235": 13,
+            "236": 13,
+            "237": 13,
+            "238": 62,
+            "239": 32,
+            "240": 32,
+            "241": 32,
+            "242": 32,
+            "243": 32,
+            "244": 32,
+            "245": 32,
+            "246": 13,
+            "247": 13
+          },
+          "Branches": [
+            {
+              "Line": 236,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 13
+            },
+            {
+              "Line": 236,
+              "Offset": 14,
+              "EndOffset": 24,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String DataChronicles.Api.Services.TicketProcessingService::CleanDescription(System.String)": {
+          "Lines": {
+            "251": 18,
+            "252": 19,
+            "253": 17,
+            "254": 17,
+            "255": 17,
+            "256": 18
+          },
+          "Branches": [
+            {
+              "Line": 252,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 252,
+              "Offset": 9,
+              "EndOffset": 19,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 17
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.TicketProcessingService::.ctor(DataChronicles.Api.Services.ZeroShotClassifierService,DataChronicles.Api.Services.DataChroniclesDbContext,Microsoft.AspNetCore.SignalR.IHubContext`1<DataChronicles.Api.Hubs.ProgressHub>,Microsoft.Extensions.Logging.ILogger`1<DataChronicles.Api.Services.TicketProcessingService>,DataChronicles.Api.Services.AzureAiEmbeddingService)": {
+          "Lines": {
+            "25": 5,
+            "26": 5,
+            "27": 5,
+            "28": 5,
+            "29": 5,
+            "30": 5,
+            "31": 5,
+            "32": 5,
+            "33": 5,
+            "34": 5,
+            "35": 5,
+            "36": 5,
+            "37": 5
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Services.TicketProcessingService/<>c": {
+        "System.String DataChronicles.Api.Services.TicketProcessingService/<>c::<ProcessAsync>b__6_0(DataChronicles.Api.Models.InputTicket)": {
+          "Lines": {
+            "46": 16
+          },
+          "Branches": []
+        },
+        "System.Boolean DataChronicles.Api.Services.TicketProcessingService/<>c::<ProcessAsync>b__6_1(DataChronicles.Api.Models.OutputTicket)": {
+          "Lines": {
+            "93": 16
+          },
+          "Branches": []
+        },
+        "System.Boolean DataChronicles.Api.Services.TicketProcessingService/<>c::<ProcessAsync>b__6_2(DataChronicles.Api.Models.OutputTicket)": {
+          "Lines": {
+            "102": 15
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Services.TicketProcessingService/<ProcessAsync>d__6": {
+        "System.Void DataChronicles.Api.Services.TicketProcessingService/<ProcessAsync>d__6::MoveNext()": {
+          "Lines": {
+            "40": 1,
+            "41": 1,
+            "42": 1,
+            "43": 1,
+            "44": 1,
+            "50": 1,
+            "53": 1,
+            "55": 32,
+            "56": 15,
+            "57": 15,
+            "58": 15,
+            "60": 15,
+            "61": 15,
+            "62": 15,
+            "63": 15,
+            "64": 15,
+            "65": 15,
+            "66": 15,
+            "67": 15,
+            "68": 15,
+            "69": 15,
+            "70": 15,
+            "71": 15,
+            "72": 15,
+            "73": 15,
+            "75": 15,
+            "76": 15,
+            "78": 15,
+            "79": 15,
+            "80": 15,
+            "84": 1,
+            "85": 0,
+            "87": 1,
+            "89": 1,
+            "90": 1,
+            "92": 1,
+            "95": 1,
+            "96": 1,
+            "97": 1,
+            "98": 1,
+            "99": 1,
+            "100": 1,
+            "101": 1,
+            "103": 1,
+            "104": 1,
+            "105": 1,
+            "106": 1
+          },
+          "Branches": [
+            {
+              "Line": 53,
+              "Offset": 346,
+              "EndOffset": 351,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 53,
+              "Offset": 346,
+              "EndOffset": 493,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 55,
+              "Offset": 1246,
+              "EndOffset": 531,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 15
+            },
+            {
+              "Line": 60,
+              "Offset": 926,
+              "EndOffset": 928,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 15
+            },
+            {
+              "Line": 60,
+              "Offset": 926,
+              "EndOffset": 931,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 55,
+              "Offset": 1246,
+              "EndOffset": 1251,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 84,
+              "Offset": 1264,
+              "EndOffset": 1266,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 84,
+              "Offset": 1264,
+              "EndOffset": 1313,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "DataChronicles.Api.Services.TicketProcessingService/<ReportProgress>d__14": {
+        "System.Void DataChronicles.Api.Services.TicketProcessingService/<ReportProgress>d__14::MoveNext()": {
+          "Lines": {
+            "259": 16,
+            "260": 16,
+            "261": 0,
+            "263": 16,
+            "264": 16
+          },
+          "Branches": [
+            {
+              "Line": 260,
+              "Offset": 45,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 260,
+              "Offset": 45,
+              "EndOffset": 203,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 16
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Services\\ZeroShotClassifierService.cs": {
+      "DataChronicles.Api.Services.ZeroShotClassifierService": {
+        "System.Boolean DataChronicles.Api.Services.ZeroShotClassifierService::get_HfEnabled()": {
+          "Lines": {
+            "61": 17
+          },
+          "Branches": [
+            {
+              "Line": 61,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 11,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 17
+            },
+            {
+              "Line": 61,
+              "Offset": 30,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 17
+            }
+          ]
+        },
+        "System.ValueTuple`2<System.String,System.Double> DataChronicles.Api.Services.ZeroShotClassifierService::ClassifyOffline(System.String)": {
+          "Lines": {
+            "130": 17,
+            "131": 17,
+            "132": 17,
+            "134": 221,
+            "135": 799,
+            "137": 102,
+            "138": 17,
+            "140": 17,
+            "141": 1,
+            "143": 16,
+            "144": 16,
+            "145": 17
+          },
+          "Branches": [
+            {
+              "Line": 134,
+              "Offset": 125,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 85
+            },
+            {
+              "Line": 135,
+              "Offset": 81,
+              "EndOffset": 83,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 17
+            },
+            {
+              "Line": 135,
+              "Offset": 81,
+              "EndOffset": 107,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 85
+            },
+            {
+              "Line": 134,
+              "Offset": 125,
+              "EndOffset": 127,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 17
+            },
+            {
+              "Line": 140,
+              "Offset": 213,
+              "EndOffset": 215,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 140,
+              "Offset": 213,
+              "EndOffset": 240,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 16
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.ZeroShotClassifierService::.ctor(System.Net.Http.HttpClient,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger`1<DataChronicles.Api.Services.ZeroShotClassifierService>)": {
+          "Lines": {
+            "45": 8,
+            "46": 8,
+            "47": 8,
+            "48": 8,
+            "49": 8,
+            "50": 8,
+            "52": 8,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 8
+          },
+          "Branches": [
+            {
+              "Line": 50,
+              "Offset": 52,
+              "EndOffset": 54,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 50,
+              "Offset": 52,
+              "EndOffset": 60,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 8
+            },
+            {
+              "Line": 52,
+              "Offset": 76,
+              "EndOffset": 78,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 95,
+              "EndOffset": 97,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 76,
+              "EndOffset": 115,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 8
+            },
+            {
+              "Line": 52,
+              "Offset": 95,
+              "EndOffset": 115,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 8
+            },
+            {
+              "Line": 52,
+              "Offset": 118,
+              "EndOffset": 120,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 118,
+              "EndOffset": 188,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 8
+            }
+          ]
+        },
+        "System.Void DataChronicles.Api.Services.ZeroShotClassifierService::.cctor()": {
+          "Lines": {
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "36": 1,
+            "37": 1,
+            "38": 1,
+            "39": 1,
+            "40": 1,
+            "41": 1,
+            "42": 1,
+            "43": 1
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Services.ZeroShotClassifierService/<>c": {
+        "System.Double DataChronicles.Api.Services.ZeroShotClassifierService/<>c::<ClassifyWithHuggingFaceAsync>b__13_0(Newtonsoft.Json.Linq.JToken)": {
+          "Lines": {
+            "116": 0
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Services.ZeroShotClassifierService/<ClassifyAsync>d__12": {
+        "System.Void DataChronicles.Api.Services.ZeroShotClassifierService/<ClassifyAsync>d__12::MoveNext()": {
+          "Lines": {
+            "68": 18,
+            "69": 18,
+            "70": 1,
+            "72": 17,
+            "73": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "88": 17,
+            "89": 17,
+            "90": 18
+          },
+          "Branches": [
+            {
+              "Line": 69,
+              "Offset": 28,
+              "EndOffset": 30,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 69,
+              "Offset": 28,
+              "EndOffset": 62,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 17
+            },
+            {
+              "Line": 72,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 73,
+              "EndOffset": 87,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 17
+            },
+            {
+              "Line": 72,
+              "Offset": 90,
+              "EndOffset": 95,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 90,
+              "EndOffset": 375,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 17
+            }
+          ]
+        }
+      },
+      "DataChronicles.Api.Services.ZeroShotClassifierService/<ClassifyWithHuggingFaceAsync>d__13": {
+        "System.Void DataChronicles.Api.Services.ZeroShotClassifierService/<ClassifyWithHuggingFaceAsync>d__13::MoveNext()": {
+          "Lines": {
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "104": 0,
+            "105": 0,
+            "111": 0,
+            "112": 0,
+            "114": 0,
+            "115": 0,
+            "117": 0,
+            "119": 0,
+            "120": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0
+          },
+          "Branches": [
+            {
+              "Line": 111,
+              "Offset": 421,
+              "EndOffset": 423,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 421,
+              "EndOffset": 439,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 444,
+              "EndOffset": 449,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 463,
+              "EndOffset": 465,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 463,
+              "EndOffset": 469,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 479,
+              "EndOffset": 481,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 494,
+              "EndOffset": 496,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 494,
+              "EndOffset": 500,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 479,
+              "EndOffset": 515,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 520,
+              "EndOffset": 522,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 520,
+              "EndOffset": 636,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 444,
+              "EndOffset": 655,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 690,
+              "EndOffset": 692,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 690,
+              "EndOffset": 696,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 708,
+              "EndOffset": 710,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 708,
+              "EndOffset": 714,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 720,
+              "EndOffset": 722,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 720,
+              "EndOffset": 730,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 753,
+              "EndOffset": 755,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 753,
+              "EndOffset": 768,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 780,
+              "EndOffset": 782,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 780,
+              "EndOffset": 795,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Models\\Tickets.cs": {
+      "DataChronicles.Api.Models.InputTicket": {
+        "System.String DataChronicles.Api.Models.InputTicket::get_Description()": {
+          "Lines": {
+            "6": 154
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.InputTicket::get_ApplicationName()": {
+          "Lines": {
+            "7": 90
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.InputTicket::get_Incident()": {
+          "Lines": {
+            "8": 83
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.InputTicket::get_JobName()": {
+          "Lines": {
+            "9": 83
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Models.OutputTicket": {
+        "System.Int32 DataChronicles.Api.Models.OutputTicket::get_Id()": {
+          "Lines": {
+            "15": 15
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.OutputTicket::get_ApplicationName()": {
+          "Lines": {
+            "16": 119
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.OutputTicket::get_Incident()": {
+          "Lines": {
+            "17": 142
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.OutputTicket::get_JobName()": {
+          "Lines": {
+            "18": 190
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.OutputTicket::get_Category()": {
+          "Lines": {
+            "19": 260
+          },
+          "Branches": []
+        },
+        "System.Double DataChronicles.Api.Models.OutputTicket::get_Confidence()": {
+          "Lines": {
+            "20": 51
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.OutputTicket::get_Severity()": {
+          "Lines": {
+            "21": 156
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.OutputTicket::get_Sentiment()": {
+          "Lines": {
+            "22": 150
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.OutputTicket::get_Source()": {
+          "Lines": {
+            "24": 154
+          },
+          "Branches": []
+        },
+        "System.Boolean DataChronicles.Api.Models.OutputTicket::get_IsDuplicate()": {
+          "Lines": {
+            "26": 74
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.OutputTicket::get_DuplicateOf()": {
+          "Lines": {
+            "28": 41
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.OutputTicket::get_Embedding()": {
+          "Lines": {
+            "30": 30
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.OutputTicket::get_BatchId()": {
+          "Lines": {
+            "31": 110
+          },
+          "Branches": []
+        },
+        "System.DateTime DataChronicles.Api.Models.OutputTicket::get_CreatedOn()": {
+          "Lines": {
+            "32": 30
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Models.CategorySummary": {
+        "System.String DataChronicles.Api.Models.CategorySummary::get_Category()": {
+          "Lines": {
+            "38": 104
+          },
+          "Branches": []
+        },
+        "System.Int32 DataChronicles.Api.Models.CategorySummary::get_Count()": {
+          "Lines": {
+            "39": 86
+          },
+          "Branches": []
+        },
+        "System.Double DataChronicles.Api.Models.CategorySummary::get_Percentage()": {
+          "Lines": {
+            "40": 52
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Models.IssueGroup": {
+        "System.String DataChronicles.Api.Models.IssueGroup::get_Signature()": {
+          "Lines": {
+            "46": 12
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.IssueGroup::get_Category()": {
+          "Lines": {
+            "47": 13
+          },
+          "Branches": []
+        },
+        "System.Int32 DataChronicles.Api.Models.IssueGroup::get_Count()": {
+          "Lines": {
+            "48": 12
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.IssueGroup::get_RepresentativeIncident()": {
+          "Lines": {
+            "49": 12
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Models.CategorizationResult": {
+        "System.String DataChronicles.Api.Models.CategorizationResult::get_BatchId()": {
+          "Lines": {
+            "55": 8
+          },
+          "Branches": []
+        },
+        "System.Int32 DataChronicles.Api.Models.CategorizationResult::get_TotalRecords()": {
+          "Lines": {
+            "56": 6
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<DataChronicles.Api.Models.OutputTicket> DataChronicles.Api.Models.CategorizationResult::get_Tickets()": {
+          "Lines": {
+            "57": 9
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<DataChronicles.Api.Models.CategorySummary> DataChronicles.Api.Models.CategorizationResult::get_Summary()": {
+          "Lines": {
+            "58": 9
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.CategorizationResult::get_Source()": {
+          "Lines": {
+            "60": 7
+          },
+          "Branches": []
+        },
+        "System.Int32 DataChronicles.Api.Models.CategorizationResult::get_DuplicateCount()": {
+          "Lines": {
+            "62": 4
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<DataChronicles.Api.Models.IssueGroup> DataChronicles.Api.Models.CategorizationResult::get_Groups()": {
+          "Lines": {
+            "64": 6
+          },
+          "Branches": []
+        },
+        "System.String DataChronicles.Api.Models.CategorizationResult::get_FileName()": {
+          "Lines": {
+            "65": 6
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Controllers\\CategorizationController.cs": {
+      "DataChronicles.Api.Controllers.CategorizationController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult DataChronicles.Api.Controllers.CategorizationController::Download(System.String)": {
+          "Lines": {
+            "69": 2,
+            "70": 2,
+            "71": 2,
+            "72": 1,
+            "74": 1,
+            "75": 1,
+            "76": 1,
+            "77": 2
+          },
+          "Branches": [
+            {
+              "Line": 71,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 71,
+              "Offset": 26,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult DataChronicles.Api.Controllers.CategorizationController::Sample()": {
+          "Lines": {
+            "82": 1,
+            "83": 1,
+            "84": 1,
+            "85": 1,
+            "86": 1,
+            "87": 1
+          },
+          "Branches": []
+        },
+        "System.Void DataChronicles.Api.Controllers.CategorizationController::.ctor(DataChronicles.Api.Services.ExcelInputReader,DataChronicles.Api.Services.TicketProcessingService,DataChronicles.Api.Services.ExcelOutputWriter,DataChronicles.Api.Services.BlobStorageService,DataChronicles.Api.Services.GeneratedFileStore,Microsoft.Extensions.Logging.ILogger`1<DataChronicles.Api.Controllers.CategorizationController>)": {
+          "Lines": {
+            "18": 5,
+            "19": 5,
+            "20": 5,
+            "21": 5,
+            "22": 5,
+            "23": 5,
+            "24": 5,
+            "25": 5,
+            "26": 5,
+            "27": 5,
+            "28": 5,
+            "29": 5,
+            "30": 5,
+            "31": 5,
+            "32": 5
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Controllers.CategorizationController/<Upload>d__7": {
+        "System.Void DataChronicles.Api.Controllers.CategorizationController/<Upload>d__7::MoveNext()": {
+          "Lines": {
+            "42": 2,
+            "45": 2,
+            "46": 2,
+            "47": 1,
+            "48": 1,
+            "49": 1,
+            "50": 1,
+            "53": 1,
+            "56": 1,
+            "57": 0,
+            "59": 1,
+            "60": 1,
+            "61": 1,
+            "63": 1,
+            "64": 2
+          },
+          "Branches": [
+            {
+              "Line": 56,
+              "Offset": 282,
+              "EndOffset": 284,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 56,
+              "Offset": 282,
+              "EndOffset": 316,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\941208\\Downloads\\DataChronicles_COMPLETE_Download\\backend\\DataChronicles.Api\\Controllers\\ChatController.cs": {
+      "DataChronicles.Api.Controllers.ChatController": {
+        "System.Void DataChronicles.Api.Controllers.ChatController::.ctor(DataChronicles.Api.Services.ChatService)": {
+          "Lines": {
+            "12": 2
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Controllers.ChatController/ChatRequest": {
+        "System.String DataChronicles.Api.Controllers.ChatController/ChatRequest::get_Question()": {
+          "Lines": {
+            "14": 5
+          },
+          "Branches": []
+        }
+      },
+      "DataChronicles.Api.Controllers.ChatController/<Ask>d__3": {
+        "System.Void DataChronicles.Api.Controllers.ChatController/<Ask>d__3::MoveNext()": {
+          "Lines": {
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "21": 1
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

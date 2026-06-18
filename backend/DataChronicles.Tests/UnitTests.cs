@@ -1,3 +1,5 @@
+using System.Net;
+using System.Text;
 using DataChronicles.Api.Models;
 using DataChronicles.Api.Services;
 using Microsoft.AspNetCore.Http;
@@ -156,10 +158,11 @@ public class ExcelOutputWriterTests
         Assert.NotEmpty(bytes);
 
         using var pkg = new ExcelPackage(new MemoryStream(bytes));
-        Assert.Equal(2, pkg.Workbook.Worksheets.Count);
+        Assert.Equal(3, pkg.Workbook.Worksheets.Count);
         Assert.Equal("Summary", pkg.Workbook.Worksheets[0].Name);
         Assert.True(pkg.Workbook.Worksheets[0].Drawings.Count >= 1); // pie chart present
         Assert.Equal("Categorized Data", pkg.Workbook.Worksheets[1].Name);
+        Assert.Equal("Issue Groups", pkg.Workbook.Worksheets[2].Name);
     }
 }
 
@@ -225,5 +228,249 @@ public class ChatServiceTests
         using var db = SeededDb("b1");
         var answer = await new ChatService(db).AnswerAsync("hello there", "b1");
         Assert.Contains("analyzed", answer, StringComparison.OrdinalIgnoreCase);
+    }
+}
+
+/// <summary>Stub transport so the Azure AI client can be tested without a live endpoint.</summary>
+internal sealed class StubHttpHandler : HttpMessageHandler
+{
+    private readonly Func<HttpRequestMessage, HttpResponseMessage> _responder;
+    public StubHttpHandler(Func<HttpRequestMessage, HttpResponseMessage> responder) => _responder = responder;
+    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        => Task.FromResult(_responder(request));
+
+    public static HttpResponseMessage Json(HttpStatusCode status, string json) =>
+        new(status) { Content = new StringContent(json, Encoding.UTF8, "application/json") };
+
+    public static HttpResponseMessage Chat(string content) =>
+        Json(HttpStatusCode.OK, "{\"choices\":[{\"message\":{\"content\":" + System.Text.Json.JsonSerializer.Serialize(content) + "}}]}");
+}
+
+public class AzureAiChatServiceTests
+{
+    private static AzureAiChatService Service(IDictionary<string, string?> cfg, StubHttpHandler handler) =>
+        new(new HttpClient(handler),
+            new ConfigurationBuilder().AddInMemoryCollection(cfg).Build(),
+            NullLogger<AzureAiChatService>.Instance);
+
+    private static Dictionary<string, string?> V1Config() => new()
+    {
+        ["AzureAI:Endpoint"] = "https://res.services.ai.azure.com/openai/v1",
+        ["AzureAI:ApiKey"] = "secret-key",
+        ["AzureAI:DeploymentName"] = "gpt-4o-mini"
+    };
+
+    [Fact]
+    public void Disabled_when_unconfigured()
+    {
+        var svc = Service(new Dictionary<string, string?>(), new StubHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.OK)));
+        Assert.False(svc.Enabled);
+    }
+
+    [Fact]
+    public async Task Disabled_complete_returns_null()
+    {
+        var svc = Service(new Dictionary<string, string?>(), new StubHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.OK)));
+        Assert.Null(await svc.CompleteAsync("sys", "q"));
+    }
+
+    [Fact]
+    public async Task Success_returns_message_content()
+    {
+        var svc = Service(V1Config(), new StubHttpHandler(_ => StubHttpHandler.Chat("LLM grounded answer")));
+        Assert.True(svc.Enabled);
+        Assert.Equal("LLM grounded answer", await svc.CompleteAsync("sys", "q"));
+    }
+
+    [Fact]
+    public async Task Http_error_returns_null()
+    {
+        var svc = Service(V1Config(), new StubHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.InternalServerError)));
+        Assert.Null(await svc.CompleteAsync("sys", "q"));
+    }
+
+    [Fact]
+    public async Task V1_endpoint_posts_chat_completions_with_model_and_api_key()
+    {
+        HttpRequestMessage? captured = null;
+        string? body = null;
+        var svc = Service(V1Config(), new StubHttpHandler(req =>
+        {
+            captured = req;
+            body = req.Content!.ReadAsStringAsync().Result;
+            return StubHttpHandler.Chat("ok");
+        }));
+
+        await svc.CompleteAsync("sys", "q");
+
+        Assert.EndsWith("/openai/v1/chat/completions", captured!.RequestUri!.AbsoluteUri);
+        Assert.Contains("\"model\":\"gpt-4o-mini\"", body);
+        Assert.True(captured.Headers.Contains("api-key"));
+    }
+
+    [Fact]
+    public async Task Classic_endpoint_uses_deployments_path_with_api_version()
+    {
+        HttpRequestMessage? captured = null;
+        var cfg = new Dictionary<string, string?>
+        {
+            ["AzureAI:Endpoint"] = "https://res.openai.azure.com",
+            ["AzureAI:ApiKey"] = "secret-key",
+            ["AzureAI:DeploymentName"] = "gpt-4o-mini",
+            ["AzureAI:ApiVersion"] = "2024-10-21"
+        };
+        var svc = Service(cfg, new StubHttpHandler(req => { captured = req; return StubHttpHandler.Chat("ok"); }));
+
+        await svc.CompleteAsync("sys", "q");
+
+        Assert.Contains("/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-10-21",
+            captured!.RequestUri!.AbsoluteUri);
+    }
+}
+
+public class ChatServiceWithAiTests
+{
+    private static DataChroniclesDbContext SeededDb(string batch)
+    {
+        var opts = new DbContextOptionsBuilder<DataChroniclesDbContext>()
+            .UseInMemoryDatabase("chat-ai-" + Guid.NewGuid().ToString("N")).Options;
+        var db = new DataChroniclesDbContext(opts);
+        db.Tickets.AddRange(
+            new OutputTicket { BatchId = batch, Category = "Alert", JobName = "J1", Severity = "High", Sentiment = "Negative", Source = "Internal" },
+            new OutputTicket { BatchId = batch, Category = "Data Issue", JobName = "J2", Severity = "Low", Sentiment = "Neutral", Source = "Internal" });
+        db.SaveChanges();
+        return db;
+    }
+
+    private static AzureAiChatService Ai(StubHttpHandler handler) =>
+        new(new HttpClient(handler),
+            new ConfigurationBuilder().AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["AzureAI:Endpoint"] = "https://res.services.ai.azure.com/openai/v1",
+                ["AzureAI:ApiKey"] = "secret-key",
+                ["AzureAI:DeploymentName"] = "gpt-4o-mini"
+            }).Build(),
+            NullLogger<AzureAiChatService>.Instance);
+
+    [Fact]
+    public async Task Uses_llm_answer_when_configured()
+    {
+        using var db = SeededDb("b1");
+        var chat = new ChatService(db, Ai(new StubHttpHandler(_ => StubHttpHandler.Chat("Prioritize the High-severity Alert tickets."))));
+        var answer = await chat.AnswerAsync("what should I prioritize", "b1");
+        Assert.Contains("Prioritize the High-severity", answer);
+    }
+
+    [Fact]
+    public async Task Falls_back_to_rules_when_llm_fails()
+    {
+        using var db = SeededDb("b1");
+        var chat = new ChatService(db, Ai(new StubHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.InternalServerError))));
+        // 2 tickets seeded -> rule-based "how many" answer contains the count.
+        Assert.Contains("2", await chat.AnswerAsync("how many tickets", "b1"));
+    }
+}
+
+public class DuplicateAndGroupingTests
+{
+    private static OutputTicket T(string incident, string job, string category) =>
+        new() { Incident = incident, JobName = job, Category = category };
+
+    [Fact]
+    public void Deterministic_flags_in_batch_and_cross_batch_duplicates()
+    {
+        var history = new List<OutputTicket> { T("OLD1", "J1", "Alert") };
+        var rows = new List<OutputTicket>
+        {
+            T("INC1", "J1", "Alert"),        // matches history -> duplicate of OLD1
+            T("INC2", "J2", "Data Issue"),   // unique
+            T("INC3", "J2", "Data Issue"),   // matches INC2 in-batch -> duplicate of INC2
+        };
+
+        var groups = TicketProcessingService.ApplyDeterministicDuplicatesAndGroups(rows, history);
+
+        Assert.True(rows[0].IsDuplicate);
+        Assert.Equal("OLD1", rows[0].DuplicateOf);
+        Assert.False(rows[1].IsDuplicate);
+        Assert.True(rows[2].IsDuplicate);
+        Assert.Equal("INC2", rows[2].DuplicateOf);
+        Assert.Contains(groups, g => g.Count == 2 && g.Category == "Data Issue");
+    }
+
+    [Fact]
+    public void Semantic_flags_duplicates_and_clusters_by_cosine()
+    {
+        var rows = new List<OutputTicket> { T("A", "J1", "Alert"), T("B", "J2", "Alert"), T("C", "J3", "Data Issue") };
+        var vectors = new[]
+        {
+            new[] { 1f, 0f },
+            new[] { 1f, 0f }, // identical to row 0 -> duplicate + same cluster
+            new[] { 0f, 1f }, // orthogonal -> unique
+        };
+
+        var groups = TicketProcessingService.ApplySemanticDuplicatesAndGroups(rows, vectors, new List<OutputTicket>(), 0.85);
+
+        Assert.False(rows[0].IsDuplicate);
+        Assert.True(rows[1].IsDuplicate);
+        Assert.Equal("A", rows[1].DuplicateOf);
+        Assert.False(rows[2].IsDuplicate);
+        Assert.Contains(groups, g => g.Count == 2);
+    }
+
+    [Fact]
+    public void Cosine_is_one_for_parallel_and_zero_for_orthogonal_or_missing()
+    {
+        Assert.Equal(1.0, AzureAiEmbeddingService.Cosine(new[] { 1f, 1f }, new[] { 2f, 2f }), 3);
+        Assert.Equal(0.0, AzureAiEmbeddingService.Cosine(new[] { 1f, 0f }, new[] { 0f, 1f }), 3);
+        Assert.Equal(0.0, AzureAiEmbeddingService.Cosine(null, new[] { 1f }), 3);
+    }
+}
+
+public class AzureAiEmbeddingServiceTests
+{
+    private static Dictionary<string, string?> Cfg() => new()
+    {
+        ["AzureAI:Endpoint"] = "https://res.services.ai.azure.com/openai/v1",
+        ["AzureAI:ApiKey"] = "secret-key",
+        ["AzureAI:EmbeddingDeploymentName"] = "text-embedding-3-small"
+    };
+
+    private static AzureAiEmbeddingService Service(IDictionary<string, string?> cfg, StubHttpHandler handler) =>
+        new(new HttpClient(handler),
+            new ConfigurationBuilder().AddInMemoryCollection(cfg).Build(),
+            NullLogger<AzureAiEmbeddingService>.Instance);
+
+    [Fact]
+    public void Disabled_without_embedding_deployment()
+    {
+        var cfg = Cfg(); cfg.Remove("AzureAI:EmbeddingDeploymentName");
+        var svc = Service(cfg, new StubHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.OK)));
+        Assert.False(svc.Enabled);
+        Assert.Equal(0.6, svc.SimilarityThreshold, 3);
+    }
+
+    [Fact]
+    public async Task Disabled_embed_returns_null()
+    {
+        var svc = Service(new Dictionary<string, string?>(), new StubHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.OK)));
+        Assert.Null(await svc.EmbedAsync(new[] { "x" }));
+    }
+
+    [Fact]
+    public async Task Parses_embedding_vectors_in_order()
+    {
+        var json = "{\"data\":[{\"index\":0,\"embedding\":[0.1,0.2]},{\"index\":1,\"embedding\":[0.3,0.4]}]}";
+        var svc = Service(Cfg(), new StubHttpHandler(_ => StubHttpHandler.Json(HttpStatusCode.OK, json)));
+        var vecs = await svc.EmbedAsync(new[] { "a", "b" });
+        Assert.NotNull(vecs);
+        Assert.Equal(2, vecs!.Length);
+        Assert.True(Math.Abs(vecs[1][0] - 0.3f) < 0.001);
+    }
+
+    [Fact]
+    public async Task Http_error_returns_null()
+    {
+        var svc = Service(Cfg(), new StubHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.InternalServerError)));
+        Assert.Null(await svc.EmbedAsync(new[] { "a" }));
     }
 }

@@ -10,6 +10,8 @@ export interface OutputTicket {
   severity: string;
   sentiment: string;
   source: string;
+  isDuplicate: boolean;
+  duplicateOf?: string | null;
   batchId: string;
   createdOn: string;
 }
@@ -20,12 +22,21 @@ export interface CategorySummary {
   percentage: number;
 }
 
+export interface IssueGroup {
+  signature: string;
+  category: string;
+  count: number;
+  representativeIncident: string;
+}
+
 export interface CategorizationResult {
   batchId: string;
   totalRecords: number;
   tickets: OutputTicket[];
   summary: CategorySummary[];
   source: string;
+  duplicateCount: number;
+  groups: IssueGroup[];
   fileName: string;
 }
 

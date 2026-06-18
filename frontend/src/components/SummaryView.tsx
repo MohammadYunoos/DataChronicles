@@ -22,6 +22,8 @@ export default function SummaryView({ result }: { result: CategorizationResult }
       </div>
       <p className="muted">
         Batch <code>{result.batchId}</code> · {result.totalRecords} tickets · {result.summary.length} categories
+        {' · '}
+        <strong>{result.duplicateCount}</strong> duplicate{result.duplicateCount === 1 ? '' : 's'} flagged
       </p>
 
       <div className="summary-body">
@@ -66,6 +68,33 @@ export default function SummaryView({ result }: { result: CategorizationResult }
           </tbody>
         </table>
       </div>
+
+      {result.groups.length > 0 && (
+        <div className="issue-groups">
+          <h3>Recurring issue groups</h3>
+          <p className="muted">Similar tickets clustered together — focus here to fix root causes, not symptoms.</p>
+          <table className="summary-table">
+            <thead>
+              <tr>
+                <th>Issue Group</th>
+                <th>Category</th>
+                <th>Count</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              {result.groups.map((g, i) => (
+                <tr key={i}>
+                  <td>{g.signature}</td>
+                  <td>{g.category}</td>
+                  <td>{g.count}</td>
+                  <td>{g.representativeIncident}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </section>
   );
 }

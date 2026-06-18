@@ -22,6 +22,12 @@ public class OutputTicket
     public string Sentiment { get; set; } = "Neutral";
     /// <summary>Which engine produced the category: "BART" (Hugging Face) or "Internal".</summary>
     public string Source { get; set; } = "Internal";
+    /// <summary>True when this ticket matches an earlier one (in this batch or a prior persisted batch).</summary>
+    public bool IsDuplicate { get; set; }
+    /// <summary>Incident of the existing ticket this one duplicates (null when not a duplicate).</summary>
+    public string? DuplicateOf { get; set; }
+    /// <summary>JSON-serialized embedding vector, persisted so historical comparison needn't re-embed.</summary>
+    public string? Embedding { get; set; }
     public string BatchId { get; set; } = string.Empty;
     public DateTime CreatedOn { get; set; }
 }
@@ -34,6 +40,15 @@ public class CategorySummary
     public double Percentage { get; set; }
 }
 
+/// <summary>A cluster of similar/recurring issues, to focus teams on fundamental problems.</summary>
+public class IssueGroup
+{
+    public string Signature { get; set; } = string.Empty;
+    public string Category { get; set; } = string.Empty;
+    public int Count { get; set; }
+    public string RepresentativeIncident { get; set; } = string.Empty;
+}
+
 /// <summary>Full result of a categorization run, returned to the UI as JSON.</summary>
 public class CategorizationResult
 {
@@ -43,5 +58,9 @@ public class CategorizationResult
     public List<CategorySummary> Summary { get; set; } = new();
     /// <summary>Engine used for the batch: "BART", "Internal", or "Mixed".</summary>
     public string Source { get; set; } = "Internal";
+    /// <summary>Number of tickets in this batch flagged as duplicates of an existing ticket.</summary>
+    public int DuplicateCount { get; set; }
+    /// <summary>Clusters of similar issues (largest first) to highlight recurring/fundamental problems.</summary>
+    public List<IssueGroup> Groups { get; set; } = new();
     public string FileName { get; set; } = "categorized_output.xlsx";
 }

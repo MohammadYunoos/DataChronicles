@@ -37,6 +37,7 @@ export default function ResultsTable({ tickets }: { tickets: OutputTicket[] }) {
               <th>Severity</th>
               <th>Sentiment</th>
               <th>Source</th>
+              <th>Duplicate</th>
             </tr>
           </thead>
           <tbody>
@@ -50,6 +51,11 @@ export default function ResultsTable({ tickets }: { tickets: OutputTicket[] }) {
                 <td><span className={`badge ${sevClass(t.severity)}`}>{t.severity}</span></td>
                 <td>{t.sentiment}</td>
                 <td>{t.source === 'BART' ? '🤗 BART' : '⚙️ Internal'}</td>
+                <td>
+                  {t.isDuplicate
+                    ? <span className="badge dup-yes" title={t.duplicateOf ? `Duplicate of ${t.duplicateOf}` : 'Duplicate'}>Duplicate</span>
+                    : <span className="muted">—</span>}
+                </td>
               </tr>
             ))}
           </tbody>

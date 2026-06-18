@@ -59,7 +59,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<ZeroShotClassifierService>(c =>
-    c.Timeout = TimeSpan.FromSeconds(120)); // fail fast if HF is unreachable
+    // Allow for HF cold-start model loading (wait_for_model can take 20-40s on the
+    // first call). The circuit breaker means only the first failed call waits this long.
+    c.Timeout = TimeSpan.FromSeconds(120));
+builder.Services.AddHttpClient<AzureAiChatService>(c => c.Timeout = TimeSpan.FromSeconds(60));
+builder.Services.AddHttpClient<AzureAiEmbeddingService>(c => c.Timeout = TimeSpan.FromSeconds(60));
 builder.Services.AddScoped<ExcelInputReader>();
 builder.Services.AddScoped<ExcelOutputWriter>();
 builder.Services.AddScoped<TicketProcessingService>();
