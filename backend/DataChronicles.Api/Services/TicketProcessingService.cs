@@ -90,9 +90,11 @@ public class TicketProcessingService
         await ReportProgress(connectionId, 100);
 
         var duplicateCount = results.Count(r => r.IsDuplicate);
-        var groupCount = groups.Count;
-        _log.LogInformation("Categorized {Count} tickets in batch {Batch} ({Dupes} duplicates, {Groups} issue groups)",
-            total, batchId, duplicateCount, groupCount);
+        if (_log.IsEnabled(LogLevel.Information))
+        {
+            _log.LogInformation("Categorized {Count} tickets in batch {Batch} ({Dupes} duplicates, {Groups} issue groups)",
+                total, batchId, duplicateCount, groups.Count);
+        }
 
         return new CategorizationResult
         {
