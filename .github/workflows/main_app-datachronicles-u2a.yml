@@ -1,17 +1,16 @@
 name: Build and deploy Data Chronicles to Azure App Service
 
 # Deploys the single App Service package (React UI bundled into the .NET API's wwwroot).
-# Auth: publish profile (SCM basic-auth publishing must be enabled on the Web App).
-# Required GitHub secret: AZURE_WEBAPP_PUBLISH_PROFILE
-#   Web App → Overview → "Download publish profile", then add its full contents as the secret.
+# Set up via:  App Service → Deployment Center → GitHub  (this file is what it runs),
+# or commit it manually and add the publish-profile secret below.
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
+  workflow_dispatch:        # allow manual runs from the Actions tab
 
 env:
-  AZURE_WEBAPP_NAME: app-datachronicles-u2a        # <-- must match the App Service RESOURCE name (Portal → Overview → Name)
+  AZURE_WEBAPP_NAME: app-datachronicles-u2a           # <-- change to your Web App name
   DOTNET_VERSION: '9.0.x'
   NODE_VERSION: '20.x'
   API_PROJECT: backend/DataChronicles.Api/DataChronicles.Api.csproj
@@ -19,6 +18,7 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: production
     permissions:
       contents: read
 
@@ -52,6 +52,12 @@ jobs:
         run: |
           mkdir -p publish/wwwroot
           cp -r frontend/dist/* publish/wwwroot/
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app
+          path: publish
 
       # ---- Deploy to Azure App Service ----
       - name: Deploy to Azure Web App
