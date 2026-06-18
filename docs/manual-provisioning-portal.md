@@ -170,7 +170,7 @@ client/Postman ──(APIM subscription key)──▶ APIM ──(bearer token A
   Easy Auth app and attach it as `Authorization: Bearer …`. This is the bearer token — **APIM supplies it, the
   caller never sees it.** That is why Postman needs no token (see *"Calling the API from Postman"* below).
 
-#### Working configuration
+#### Working configuration #ADA
 1. **APIM managed identity on** — APIM → **Security → Managed identities → System assigned → On → Save**.
 2. **APIM inbound policy** — APIM → APIs → the API → **Design → All operations → Inbound processing → </>**, inside
    `<inbound>` after `<base />`:
