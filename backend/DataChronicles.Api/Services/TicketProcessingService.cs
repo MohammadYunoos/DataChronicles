@@ -89,8 +89,9 @@ public class TicketProcessingService
         await _db.SaveChangesAsync();
         await ReportProgress(connectionId, 100);
 
+        var duplicateCount = results.Count(r => r.IsDuplicate);
         _log.LogInformation("Categorized {Count} tickets in batch {Batch} ({Dupes} duplicates, {Groups} issue groups)",
-            total, batchId, results.Count(r => r.IsDuplicate), groups.Count);
+            total, batchId, duplicateCount, groups.Count);
 
         return new CategorizationResult
         {
@@ -99,7 +100,7 @@ public class TicketProcessingService
             Tickets = results,
             Summary = BuildSummary(results),
             Source = ResolveBatchSource(results),
-            DuplicateCount = results.Count(r => r.IsDuplicate),
+            DuplicateCount = duplicateCount,
             Groups = groups,
             FileName = $"test_categories_{batchId}.xlsx"
         };
