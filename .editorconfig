@@ -19,3 +19,5 @@ dotnet_diagnostic.CA1862.severity = none
 # stateless Web API authenticated by bearer tokens (no cookie/session auth), so
 # anti-forgery tokens are not the relevant protection.
 dotnet_diagnostic.SCS0016.severity = none
+
+dotnet_diagnostic.CA1873.severity = none
