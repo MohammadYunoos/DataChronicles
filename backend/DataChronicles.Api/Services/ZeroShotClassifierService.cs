@@ -63,6 +63,8 @@ public class ZeroShotClassifierService
     // Engine identifiers reported back to the UI/output.
     public const string EngineBart = "BART";
     public const string EngineInternal = "Internal";
+    /// <summary>Category reused from a prior BART-classified duplicate — no new BART call was made (token saving).</summary>
+    public const string EngineBartCached = "BART (cached)";
 
     public async Task<(string Category, double Confidence, string Source)> ClassifyAsync(string text)
     {

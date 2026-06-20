@@ -1,6 +1,7 @@
 using DataChronicles.Api.Models;
 using DataChronicles.Api.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataChronicles.Api.Controllers;
 
@@ -13,6 +14,8 @@ public class CategorizationController : ControllerBase
     private readonly ExcelOutputWriter _writer;
     private readonly BlobStorageService _blob;
     private readonly GeneratedFileStore _store;
+    private readonly EmailService _email;
+    private readonly DataChroniclesDbContext _db;
     private readonly ILogger<CategorizationController> _log;
 
     public CategorizationController(
@@ -21,6 +24,8 @@ public class CategorizationController : ControllerBase
         ExcelOutputWriter writer,
         BlobStorageService blob,
         GeneratedFileStore store,
+        EmailService email,
+        DataChroniclesDbContext db,
         ILogger<CategorizationController> log)
     {
         _reader = reader;
@@ -28,6 +33,8 @@ public class CategorizationController : ControllerBase
         _writer = writer;
         _blob = blob;
         _store = store;
+        _email = email;
+        _db = db;
         _log = log;
     }
 
@@ -74,6 +81,36 @@ public class CategorizationController : ControllerBase
         return File(file.Value.Data,
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             file.Value.FileName);
+    }
+
+    public record EmailRequest(string BatchId, string To);
+
+    /// <summary>
+    /// Emails the generated workbook for a batch (as an attachment) plus an HTML summary.
+    /// Returns { success, message } so the UI can show a friendly result; returns 404 when the
+    /// batch is unknown. Low-confidence review is enforced in the UI before this is called.
+    /// </summary>
+    [HttpPost("email")]
+    public async Task<IActionResult> Email([FromBody] EmailRequest request)
+    {
+        if (string.IsNullOrWhiteSpace(request.To) || !request.To.Contains('@', StringComparison.Ordinal))
+            return BadRequest(new { error = "A valid recipient email address is required." });
+
+        var file = _store.Get(request.BatchId);
+        if (file == null)
+            return NotFound(new { error = "No generated file found for this batch." });
+
+        var tickets = await _db.Tickets
+            .Where(t => t.BatchId == request.BatchId)
+            .ToListAsync();
+
+        var html = EmailService.BuildSummaryHtml(request.BatchId, tickets);
+        var subject = $"Data Chronicles categorization report — batch {request.BatchId}";
+
+        var (ok, message) = await _email.SendAsync(
+            request.To, subject, html, file.Value.Data, file.Value.FileName);
+
+        return Ok(new { success = ok, message });
     }
 
     /// <summary>Download a ready-made sample input file to try the workflow.</summary>

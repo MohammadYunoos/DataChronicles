@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging.Abstractions;
+using Newtonsoft.Json;
 using OfficeOpenXml;
 using Xunit;
 
@@ -98,6 +99,9 @@ public class TicketProcessingStaticsTests
             { new() { Source = "BART" }, new() { Source = "BART" } }));
         Assert.Equal("Mixed", TicketProcessingService.ResolveBatchSource(new()
             { new() { Source = "BART" }, new() { Source = "Internal" } }));
+        // "BART (cached)" folds into BART lineage, so an all-BART(+cached) batch is not "Mixed".
+        Assert.Equal("BART", TicketProcessingService.ResolveBatchSource(new()
+            { new() { Source = "BART" }, new() { Source = "BART (cached)" } }));
     }
 }
 
@@ -426,6 +430,91 @@ public class DuplicateAndGroupingTests
     }
 }
 
+public class ReusableBartMatchTests
+{
+    private static OutputTicket Hist(string incident, string job, string category, string source, float[]? vec = null) =>
+        new()
+        {
+            Incident = incident, JobName = job, Category = category, Source = source,
+            Confidence = 0.91, Embedding = vec == null ? null : JsonConvert.SerializeObject(vec)
+        };
+
+    // ---- Semantic (vectors != null) ----
+
+    [Fact]
+    public void Semantic_reuses_bart_history_match_above_threshold()
+    {
+        var history = new List<OutputTicket> { Hist("OLD1", "J1", "Server Connectivity issue", "BART", new[] { 1f, 0f }) };
+        var vectors = new[] { new[] { 1f, 0f } }; // current row 0, identical direction
+        var match = TicketProcessingService.FindReusableBartMatch(
+            0, "J1", new List<OutputTicket>(), vectors, history, 0.85);
+        Assert.NotNull(match);
+        Assert.Equal("OLD1", match!.Incident);
+        Assert.Equal("Server Connectivity issue", match.Category);
+    }
+
+    [Fact]
+    public void Semantic_ignores_internal_lineage_even_if_identical()
+    {
+        var history = new List<OutputTicket> { Hist("OLD1", "J1", "Alert", "Internal", new[] { 1f, 0f }) };
+        var vectors = new[] { new[] { 1f, 0f } };
+        var match = TicketProcessingService.FindReusableBartMatch(
+            0, "J1", new List<OutputTicket>(), vectors, history, 0.85);
+        Assert.Null(match);
+    }
+
+    [Fact]
+    public void Semantic_reuses_earlier_in_batch_bart_row()
+    {
+        var batchSoFar = new List<OutputTicket> { Hist("A", "J1", "Alert", "BART") };
+        var vectors = new[] { new[] { 1f, 0f }, new[] { 1f, 0f } }; // row1 matches row0
+        var match = TicketProcessingService.FindReusableBartMatch(
+            1, "J9", batchSoFar, vectors, new List<OutputTicket>(), 0.85);
+        Assert.NotNull(match);
+        Assert.Equal("A", match!.Incident);
+    }
+
+    [Fact]
+    public void Semantic_returns_null_below_threshold()
+    {
+        var history = new List<OutputTicket> { Hist("OLD1", "J1", "Alert", "BART", new[] { 0f, 1f }) };
+        var vectors = new[] { new[] { 1f, 0f } }; // orthogonal -> cosine 0
+        var match = TicketProcessingService.FindReusableBartMatch(
+            0, "J1", new List<OutputTicket>(), vectors, history, 0.85);
+        Assert.Null(match);
+    }
+
+    // ---- Deterministic (vectors == null) ----
+
+    [Fact]
+    public void Deterministic_reuses_bart_history_by_jobname()
+    {
+        var history = new List<OutputTicket> { Hist("OLD1", "NightlyBatch", "Data Issue", "BART") };
+        var match = TicketProcessingService.FindReusableBartMatch(
+            0, "  nightlybatch ", new List<OutputTicket>(), null, history, 0);
+        Assert.NotNull(match);
+        Assert.Equal("Data Issue", match!.Category);
+    }
+
+    [Fact]
+    public void Deterministic_ignores_internal_jobname_match()
+    {
+        var history = new List<OutputTicket> { Hist("OLD1", "J1", "Alert", "Internal") };
+        var match = TicketProcessingService.FindReusableBartMatch(
+            0, "J1", new List<OutputTicket>(), null, history, 0);
+        Assert.Null(match);
+    }
+
+    [Fact]
+    public void Deterministic_returns_null_when_no_jobname_match()
+    {
+        var history = new List<OutputTicket> { Hist("OLD1", "J1", "Alert", "BART") };
+        var match = TicketProcessingService.FindReusableBartMatch(
+            0, "J2", new List<OutputTicket>(), null, history, 0);
+        Assert.Null(match);
+    }
+}
+
 public class AzureAiEmbeddingServiceTests
 {
     private static Dictionary<string, string?> Cfg() => new()
@@ -472,5 +561,78 @@ public class AzureAiEmbeddingServiceTests
     {
         var svc = Service(Cfg(), new StubHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.InternalServerError)));
         Assert.Null(await svc.EmbedAsync(new[] { "a" }));
+    }
+}
+
+public class EmailServiceTests
+{
+    private static EmailService Service(IDictionary<string, string?> cfg) =>
+        new(new ConfigurationBuilder().AddInMemoryCollection(cfg).Build(),
+            NullLogger<EmailService>.Instance);
+
+    private static Dictionary<string, string?> SmtpConfig() => new()
+    {
+        ["Email:Enabled"] = "true",
+        ["Email:SmtpServer"] = "smtp.gmail.com",
+        ["Email:Port"] = "587",
+        ["Email:From"] = "sender@example.com"
+    };
+
+    [Fact]
+    public void Disabled_when_unconfigured()
+    {
+        var svc = Service(new Dictionary<string, string?>());
+        Assert.False(svc.Enabled);
+    }
+
+    [Fact]
+    public void Disabled_when_flag_off_even_if_server_set()
+    {
+        var cfg = SmtpConfig();
+        cfg["Email:Enabled"] = "false";
+        Assert.False(Service(cfg).Enabled);
+    }
+
+    [Fact]
+    public void Disabled_with_placeholder_values()
+    {
+        var cfg = SmtpConfig();
+        cfg["Email:SmtpServer"] = "YOUR_SMTP_SERVER";
+        Assert.False(Service(cfg).Enabled);
+    }
+
+    [Fact]
+    public void Enabled_when_server_and_from_set()
+        => Assert.True(Service(SmtpConfig()).Enabled);
+
+    [Fact]
+    public async Task SendAsync_returns_failure_when_disabled()
+    {
+        var (ok, message) = await Service(new Dictionary<string, string?>())
+            .SendAsync("to@example.com", "subj", "<p>body</p>", null, null);
+        Assert.False(ok);
+        Assert.Contains("not configured", message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void BuildSummaryHtml_includes_totals_categories_and_low_confidence_count()
+    {
+        var tickets = new List<OutputTicket>
+        {
+            new() { Category = "Alert", Confidence = 0.95, IsDuplicate = false },
+            new() { Category = "Alert", Confidence = 0.40, IsDuplicate = true },  // low confidence + duplicate
+            new() { Category = "Data Issue", Confidence = 0.30 },                 // low confidence
+        };
+
+        var html = EmailService.BuildSummaryHtml("batch42", tickets);
+
+        Assert.Contains("batch42", html);
+        Assert.Contains("Total tickets:</strong> 3", html);
+        Assert.Contains("Duplicates flagged:</strong> 1", html);
+        Assert.Contains("review recommended", html);
+        Assert.Contains("Alert", html);
+        Assert.Contains("Data Issue", html);
+        // Two tickets below the 0.6 low-confidence threshold.
+        Assert.Matches(@"review recommended\):</strong> 2", html);
     }
 }

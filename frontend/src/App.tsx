@@ -10,6 +10,7 @@ import {
 import SummaryView from './components/SummaryView';
 import ResultsTable from './components/ResultsTable';
 import ChatPanel from './components/ChatPanel';
+import SendEmailModal from './components/SendEmailModal';
 import { AuthUser, getMe, logoutUrl } from './auth';
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
   const [result, setResult] = useState<CategorizationResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const [showEmail, setShowEmail] = useState(false);
   const [user, setUser] = useState<AuthUser | null>(null);
   const connectionId = useRef<string | undefined>(undefined);
 
@@ -108,9 +110,14 @@ export default function App() {
           )}
 
           {result && (
-            <a className="download-link" href={downloadUrl(result.batchId)}>
-              Click here to download the categorized file
-            </a>
+            <>
+              <a className="download-link" href={downloadUrl(result.batchId)}>
+                Click here to download the categorized file
+              </a>
+              <button className="primary email-btn" onClick={() => setShowEmail(true)}>
+                Send Email
+              </button>
+            </>
           )}
 
           <a className="sample-link" href={sampleUrl()}>
@@ -132,6 +139,15 @@ export default function App() {
           <SummaryView result={result} />
           <ResultsTable tickets={result.tickets} />
         </>
+      )}
+
+      {showEmail && result && (
+        <SendEmailModal
+          batchId={result.batchId}
+          tickets={result.tickets}
+          onClose={() => setShowEmail(false)}
+          onSent={setToast}
+        />
       )}
 
       {toast && (

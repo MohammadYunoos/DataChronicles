@@ -52,10 +52,28 @@ public class TicketProcessingService
         // Semantic embeddings when Azure AI is configured; null => deterministic fallback.
         float[][]? embeddings = _embed != null ? await _embed.EmbedAsync(cleaned) : null;
 
+        var threshold = _embed?.SimilarityThreshold ?? 0;
+
         for (var i = 0; i < input.Count; i++)
         {
             var t = input[i];
-            var (category, confidence, source) = await _classifier.ClassifyAsync(cleaned[i]);
+
+            // Token optimization: if this ticket duplicates a prior BART-classified ticket
+            // (earlier in this batch or in history), reuse that category instead of calling BART.
+            string category;
+            double confidence;
+            string source;
+            var reuse = FindReusableBartMatch(i, t.JobName, results, embeddings, history, threshold);
+            if (reuse != null)
+            {
+                category = reuse.Category;
+                confidence = reuse.Confidence;
+                source = ZeroShotClassifierService.EngineBartCached;
+            }
+            else
+            {
+                (category, confidence, source) = await _classifier.ClassifyAsync(cleaned[i]);
+            }
 
             var row = new OutputTicket
             {
@@ -89,8 +107,12 @@ public class TicketProcessingService
         await _db.SaveChangesAsync();
         await ReportProgress(connectionId, 100);
 
-        _log.LogInformation("Categorized {Count} tickets in batch {Batch} ({Dupes} duplicates, {Groups} issue groups)",
-            total, batchId, results.Count(r => r.IsDuplicate), groups.Count);
+        var duplicateCount = results.Count(r => r.IsDuplicate);
+        if (_log.IsEnabled(LogLevel.Information))
+        {
+            _log.LogInformation("Categorized {Count} tickets in batch {Batch} ({Dupes} duplicates, {Groups} issue groups)",
+                total, batchId, duplicateCount, groups.Count);
+        }
 
         return new CategorizationResult
         {
@@ -99,7 +121,7 @@ public class TicketProcessingService
             Tickets = results,
             Summary = BuildSummary(results),
             Source = ResolveBatchSource(results),
-            DuplicateCount = results.Count(r => r.IsDuplicate),
+            DuplicateCount = duplicateCount,
             Groups = groups,
             FileName = $"test_categories_{batchId}.xlsx"
         };
@@ -107,7 +129,62 @@ public class TicketProcessingService
 
     /// <summary>Deterministic JobName+Category key used for duplicate/grouping when embeddings are off.</summary>
     private static string DuplicateKey(OutputTicket t) =>
-        (t.JobName ?? string.Empty).Trim().ToLowerInvariant() + "|" + t.Category;
+        NormalizeJob(t.JobName) + "|" + t.Category;
+
+    private static string NormalizeJob(string? jobName) =>
+        (jobName ?? string.Empty).Trim().ToLowerInvariant();
+
+    private static bool IsBartLineage(string? source) =>
+        source == ZeroShotClassifierService.EngineBart || source == ZeroShotClassifierService.EngineBartCached;
+
+    /// <summary>
+    /// Finds a prior BART-classified ticket (earlier in this batch or in history) that the current ticket
+    /// duplicates, so its category can be reused instead of spending another BART call. Only BART-lineage
+    /// candidates are considered (so reuse never fabricates a "cached" label from an Internal category).
+    /// Semantic match (vectors != null) uses embedding cosine ≥ threshold; otherwise normalized JobName.
+    /// Returns the matched ticket, or null when there's nothing reusable. Public for unit testing.
+    /// </summary>
+    public static OutputTicket? FindReusableBartMatch(
+        int index, string currentJobName, List<OutputTicket> batchSoFar,
+        float[][]? vectors, List<OutputTicket> history, double threshold)
+    {
+        if (vectors != null)
+        {
+            var current = vectors[index];
+            double best = 0;
+            OutputTicket? bestMatch = null;
+
+            for (var j = 0; j < batchSoFar.Count && j < index; j++)
+            {
+                if (!IsBartLineage(batchSoFar[j].Source)) continue;
+                var sim = AzureAiEmbeddingService.Cosine(current, vectors[j]);
+                if (sim >= threshold && sim > best) { best = sim; bestMatch = batchSoFar[j]; }
+            }
+            foreach (var h in history)
+            {
+                if (!IsBartLineage(h.Source)) continue;
+                var v = ParseEmbedding(h.Embedding);
+                if (v == null) continue;
+                var sim = AzureAiEmbeddingService.Cosine(current, v);
+                if (sim >= threshold && sim > best) { best = sim; bestMatch = h; }
+            }
+            return bestMatch;
+        }
+
+        // Deterministic: reuse from the most recent BART-lineage ticket with the same JobName.
+        var key = NormalizeJob(currentJobName);
+        for (var j = Math.Min(index, batchSoFar.Count) - 1; j >= 0; j--)
+        {
+            if (IsBartLineage(batchSoFar[j].Source) && NormalizeJob(batchSoFar[j].JobName) == key)
+                return batchSoFar[j];
+        }
+        foreach (var h in history)
+        {
+            if (IsBartLineage(h.Source) && NormalizeJob(h.JobName) == key)
+                return h;
+        }
+        return null;
+    }
 
     /// <summary>
     /// Deterministic fallback: a ticket duplicates an earlier-in-batch or historical ticket with the
@@ -223,11 +300,17 @@ public class TicketProcessingService
         catch (JsonException) { return null; }
     }
 
-    /// <summary>Batch-level engine: "BART", "Internal", or "Mixed" if both were used.</summary>
+    /// <summary>
+    /// Batch-level engine: "BART", "Internal", or "Mixed" if both were used.
+    /// "BART (cached)" rows fold into "BART" (same lineage) so an all-BART batch isn't reported as Mixed.
+    /// </summary>
     public static string ResolveBatchSource(List<OutputTicket> rows)
     {
         if (rows.Count == 0) return ZeroShotClassifierService.EngineInternal;
-        var distinct = rows.Select(r => r.Source).Distinct().ToList();
+        var distinct = rows
+            .Select(r => IsBartLineage(r.Source) ? ZeroShotClassifierService.EngineBart : r.Source)
+            .Distinct()
+            .ToList();
         return distinct.Count == 1 ? distinct[0] : "Mixed";
     }
 

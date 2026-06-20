@@ -69,3 +69,13 @@ export async function askAssistant(question: string, batchId?: string): Promise<
   const res = await api.post<{ answer: string }>('/chat', { question, batchId });
   return res.data.answer;
 }
+
+export interface EmailSendResult {
+  success: boolean;
+  message: string;
+}
+
+export async function sendEmailReport(batchId: string, to: string): Promise<EmailSendResult> {
+  const res = await api.post<EmailSendResult>('/categorize/email', { batchId, to });
+  return res.data;
+}

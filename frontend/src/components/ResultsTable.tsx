@@ -4,6 +4,19 @@ import { OutputTicket } from '../api';
 const sevClass = (s: string) =>
   s === 'High' ? 'sev-high' : s === 'Low' ? 'sev-low' : 'sev-med';
 
+// Render the per-row classification engine. "BART (cached)" means the category was reused
+// from a prior duplicate, so no new BART/Hugging Face call was made (token saving).
+const engineLabel = (source: string) => {
+  if (source === 'BART') return <>🤗 BART</>;
+  if (source === 'BART (cached)')
+    return (
+      <span title="Category reused from a prior duplicate — BART call skipped">
+        🤗 BART <span className="muted">· cached</span>
+      </span>
+    );
+  return <>⚙️ Internal</>;
+};
+
 export default function ResultsTable({ tickets }: { tickets: OutputTicket[] }) {
   const [query, setQuery] = useState('');
   const filtered = tickets.filter((t) =>
@@ -50,7 +63,7 @@ export default function ResultsTable({ tickets }: { tickets: OutputTicket[] }) {
                 <td>{(t.confidence * 100).toFixed(0)}%</td>
                 <td><span className={`badge ${sevClass(t.severity)}`}>{t.severity}</span></td>
                 <td>{t.sentiment}</td>
-                <td>{t.source === 'BART' ? '🤗 BART' : '⚙️ Internal'}</td>
+                <td>{engineLabel(t.source)}</td>
                 <td>
                   {t.isDuplicate
                     ? <span className="badge dup-yes" title={t.duplicateOf ? `Duplicate of ${t.duplicateOf}` : 'Duplicate'}>Duplicate</span>

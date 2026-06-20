@@ -1,7 +1,8 @@
 // Shows which engine produced the categorization: Hugging Face BART vs the
 // built-in internal classifier. `source` is "BART", "Internal", or "Mixed".
 export default function EngineBadge({ source }: { source: string }) {
-  const isBart = source === 'BART';
+  // "BART (cached)" is BART lineage (the batch source is normalized server-side, but stay robust).
+  const isBart = source === 'BART' || source === 'BART (cached)';
   const isMixed = source === 'Mixed';
 
   if (isMixed) {

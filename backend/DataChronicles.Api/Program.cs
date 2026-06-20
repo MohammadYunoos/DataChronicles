@@ -70,6 +70,7 @@ builder.Services.AddScoped<TicketProcessingService>();
 builder.Services.AddScoped<ChatService>();
 builder.Services.AddSingleton<BlobStorageService>();
 builder.Services.AddSingleton<GeneratedFileStore>();
+builder.Services.AddSingleton<EmailService>();
 
 var app = builder.Build();
 
