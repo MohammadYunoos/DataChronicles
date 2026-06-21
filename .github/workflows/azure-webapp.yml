@@ -1,9 +1,11 @@
 name: Build and deploy Data Chronicles to Azure App Service
 
-# Deploys the single App Service package (React UI bundled into the .NET API's wwwroot).
-# Auth: publish profile (SCM basic-auth publishing must be enabled on the Web App).
-# Required GitHub secret: AZURE_WEBAPP_PUBLISH_PROFILE
-#   Web App → Overview → "Download publish profile", then add its full contents as the secret.
+# Builds the single App Service package (React UI bundled into the .NET API's wwwroot) ONCE,
+# then deploys it to the primary and DR App Services IN PARALLEL so the two regions never drift.
+# Auth: publish profiles (SCM basic-auth publishing must be enabled on each Web App).
+# Required GitHub secrets (Web App → Overview → "Download publish profile" → paste full contents):
+#   AZURE_WEBAPP_PUBLISH_PROFILE      → app-datachronicles-u2a (primary)
+#   AZURE_WEBAPP_PUBLISH_PROFILE_DR   → app-datachronicles-dr  (DR / secondary region)
 
 on:
   push:
@@ -11,13 +13,13 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: app-datachronicles-u2a        # <-- must match the App Service RESOURCE name (Portal → Overview → Name)
   DOTNET_VERSION: '9.0.x'
   NODE_VERSION: '20.x'
   API_PROJECT: backend/DataChronicles.Api/DataChronicles.Api.csproj
 
 jobs:
-  build-and-deploy:
+  # ---- Build the deployable package once, publish it as an artifact ----
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -53,10 +55,38 @@ jobs:
           mkdir -p publish/wwwroot
           cp -r frontend/dist/* publish/wwwroot/
 
-      # ---- Deploy to Azure App Service ----
-      - name: Deploy to Azure Web App
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-package
+          path: publish
+
+  # ---- Deploy the same package to both App Services concurrently ----
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false        # one region failing must not cancel the other
+      matrix:
+        include:
+          - app: app-datachronicles-u2a          # primary
+            profile: AZURE_WEBAPP_PUBLISH_PROFILE
+          - app: app-datachronicles-dr           # DR / secondary region
+            profile: AZURE_WEBAPP_PUBLISH_PROFILE_DR
+
+    steps:
+      - name: Download package artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: app-package
+          path: publish
+
+      - name: Deploy to ${{ matrix.app }}
         uses: azure/webapps-deploy@v3
         with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          app-name: ${{ matrix.app }}
+          publish-profile: ${{ secrets[matrix.profile] }}
           package: publish
